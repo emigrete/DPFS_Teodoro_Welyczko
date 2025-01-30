@@ -16,4 +16,4 @@ Durante este sprint, reflexioné sobre lo que hice bien y lo que puedo mejorar e
 
 ---
 
-💡 **Conclusión:** Para este sprint, voy a optimizar mi tiempo eligiendo mejor las herramientas y enfocándome en lo que realmente aporta valor a mi proyecto. ¡A seguir avanzando! 🚀
+💡 **Conclusión:** Para este sprint, voy a optimizar mi tiempo eligiendo mejor las herramientas y enfocándome en lo que realmente aporta valor a mi proyecto. 
