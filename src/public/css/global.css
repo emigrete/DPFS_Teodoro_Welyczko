@@ -1,0 +1,106 @@
+/* Estilos Generales */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: #0A192F; /* Color de fondo consistente */
+    color: #EAEAEA; /* Color de texto consistente */
+}
+
+.container {
+    flex: 1;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1E3A8A;
+    padding: 15px;
+    color: white;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 800px;
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+/* Grid de Productos */
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.product-card {
+    background: #1F2937;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Footer */
+.footer {
+    background: #1E3A8A;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+}

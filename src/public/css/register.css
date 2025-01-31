@@ -1,0 +1,103 @@
+/* Fondo igual al Login */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0A192F; /* Mismo fondo oscuro */
+    color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+
+.register-container {
+    background: #1F2937;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    text-align: center;
+    position: relative;
+}
+
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.back-btn {
+    display: block;
+    margin-top: 15px;
+    background: #6c757d;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #5a6268;
+    transform: scale(1.05);
+}
+
+.social-login {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.google-btn {
+    background: #DB4437;
+    color: white;
+}
+
+.google-btn:hover {
+    background: #B23121;
+}
+
+.facebook-btn {
+    background: #3B5998;
+    color: white;
+}
+
+.facebook-btn:hover {
+    background: #2D4373;
+}
