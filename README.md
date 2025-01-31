@@ -17,3 +17,7 @@
 - [CompraGamer](https://compragamer.com/) → **Diseño Atractivo y Moderno**: Estética visual que atrae al público objetivo.
 - [IgnaTech](https://www.ignatech.com.ar/) → **Ofertas Especiales**: Sección dedicada a promociones y descuentos actuales.
 - [FullH4rd](https://fullh4rd.com.ar/) → **Diseño Intuitivo**: Interfaz de usuario limpia y fácil de navegar, mejorando la experiencia del usuario.
+
+##📌Link Trello
+
+-[Trello](https://trello.com/invite/b/679bf0fa6dd9d5906a595a33/ATTI068484e912baf53fbadc14b387e7ba492E88CFC0/portfolio-step-by-step-guide)
