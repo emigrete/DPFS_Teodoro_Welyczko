@@ -44,3 +44,61 @@ Reflexioné sobre lo que hice bien y lo que puedo mejorar en los siguientes spri
 ---
 
 💡 **Conclusión:* Para este sprint, voy a concentrarme en no repetir codigo, modularizar bien y lograr un codigo mas limpio 
+
+# 📌 Retrospectiva del Sprint 3
+
+## ⭐ Lo que salió bien
+
+✅ Implementación de EJS para hacer las vistas dinámicas y reutilizar componentes.
+✅ Creación de una Navbar Sticky, asegurando una navegación fluida.
+✅ Corrección del Footer fijo, evitando que el contenido se superponga.
+✅ Creación de la página de productos, mostrando una mejor variedad de artículos.
+✅ Separación de vistas en carpetas products/ y users/ para mayor claridad.
+✅ Modularización del código con archivos parciales (partials/header.ejs, partials/footer.ejs, partials/head.ejs).
+✅ Implementación de sesiones de usuario y diferenciación de accesos para administradores.
+✅ Correcta organización en GitHub y versionado del código al finalizar el sprint.
+
+## ⚠️ Lo que puedo mejorar
+
+⏳ Optimización del código: Todavía hay partes del código que podrían refactorizarse y hacerse más reutilizables.
+📂 Organización de rutas: Se podrían dividir mejor las rutas en mainRoutes.js y productsRoutes.js.
+🔄 Flujo de autenticación: Asegurar que el login y logout funcionen correctamente en todas las vistas.
+📑 Revisión de estilos: Asegurar consistencia en botones, inputs y tipografías en todas las páginas.
+📌 Corregir nombres de rutas y formularios: Algunas URLs tienen nombres inconsistentes (/product/create en lugar de /products/create).
+
+## 🎯 Plan de mejora para Sprint 3
+
+🔹 Implementar CRUD de productos, permitiendo crear, editar y eliminar productos desde JSON.
+🔹 Definir la estructura de datos en products.json y users.json para almacenamiento.
+🔹 Separar y modularizar más las rutas, creando un productsModel.js para manejar JSON.
+🔹 Verificar la seguridad en las rutas, evitando accesos no autorizados.
+🔹 Mejorar la validación de formularios para evitar datos incorrectos en la base de datos.
+
+---
+
+💡 Conclusión: Este sprint nos permitió estructurar mejor las vistas y la navegación del sitio. Para el próximo sprint, el objetivo es darle funcionalidad real al sitio mediante la carga dinámica de productos y usuarios.
+
+# 📌 Retrospectiva del Sprint 4
+El Sprint 4 fue clave en la implementación del CRUD de productos con JSON, lo que nos permitió mejorar la gestión de datos y la experiencia de usuario. 
+
+## ⭐ Lo que salió bien
+
+✅Estructuramos el servidor con Express, permitiendo modularizar mejor el código.
+✅Implementamos un CRUD completo para la gestión de productos.
+✅ Desarrollamos vistas dinámicas con EJS, optimizando la reusabilidad de componentes.
+✅ Agregamos Multer para la subida de imágenes, mejorando la presentación visual.
+✅Implementamos autenticación y roles para diferenciar funciones de admin y usuario.
+✅ Creación de buscador y filtros para mejorar la usabilidad y navegación.
+✅Mejoramos la navegación agregando botones de edición y eliminación visibles solo para admins.
+
+## ⚠️ Lo que puedo mejorar
+
+🔹 La estructura de las rutas y controladores podría optimizarse para mayor claridad.
+🔹 Falta implementar un diseño responsive para mejorar la experiencia en móviles.
+🔹 Mejorar la validación de formularios para evitar datos incompletos o erróneos.
+🔹 Implementar una mejor gestión de errores y redirecciones en acciones del CRUD.
+
+## 🎯 Plan de mejora para Sprint 5
+
+🔹Tomarme mas tiempo de descanso cuando un error no es facil de resolver
+🔹Evitar intentar solucionar problemas grandes sin antes dividirlo en problemas mas chicos, la funcion de filter la encare mal. 
