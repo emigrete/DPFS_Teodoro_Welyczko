@@ -106,3 +106,38 @@ El Sprint 4 fue clave en la implementación del CRUD de productos con JSON, lo q
 ---
 
 💡 Conclusión: Este sprint logro hacer que el sitio sea mas interactivo y mas real, toca mejorar en como se encaran los problemas en lo personal pero por lo demas considero que voy a buen ritmo 
+
+---
+
+# 📌 Retrospectiva del Sprint 5
+Este Sprint se enfocó en la implementación del sistema de usuarios, incluyendo el registro, login, logout y control de accesos. También se mejoró la experiencia del usuario con navbar dinámica y protección de rutas.
+
+## ⭐ Lo que salió bien
+✅ Registro de usuarios funcionando correctamente con validaciones, subida de imagen y encriptación de contraseñas.
+✅ Login y Logout con sesiones y cookies ("Recordarme") permitiendo mantener la sesión iniciada.
+✅ Protección de rutas con middlewares guestMiddleware y authMiddleware, evitando accesos no permitidos.
+✅ Navbar dinámica que muestra diferentes opciones dependiendo si el usuario está logueado o no.
+✅ Perfil de usuario funcional, mostrando correctamente la imagen de perfil y datos personales.
+✅ Corrección de errores en redirecciones al iniciar y cerrar sesión, asegurando que el flujo de navegación sea correcto.
+✅ Buena gestión de errores en login y registro, mostrando mensajes claros cuando hay problemas con email o contraseña.
+✅ Mejoras en el diseño para que la navbar y el perfil sean más visuales y atractivos.
+
+## ⚠️ Lo que puedo mejorar
+🔹 Detectar errores más rápido en autenticación y sesiones. Perdí tiempo con redirecciones incorrectas porque req.session.user no se estaba guardando bien.
+🔹 Evitar errores por orden de ejecución, como lo que pasó con res.redirect("/profile") antes de guardar la sesión.
+🔹 Hacer más pruebas con cookies y sesiones en diferentes navegadores para asegurar compatibilidad total.
+🔹 Optimizar la validación en el registro para dar mensajes de error más específicos.
+
+## 🎯 Plan de mejora para Sprint 6
+🔹 Revisar bien el orden de ejecución en middlewares y controladores para evitar bugs de flujo.
+🔹 Practicar más debugging con console.log() en sesiones y cookies para detectar errores más rápido.
+🔹 Optimizar la validación de login y registro, permitiendo que el usuario vea en qué campo falló de manera más clara.
+🔹 Seguir mejorando la interfaz de usuario, agregando pequeños detalles para hacer la experiencia más fluida.
+
+---
+
+💡 Conclusión: Este Sprint fue clave para establecer el sistema de usuarios y protección de rutas. Aprendí a manejar sesiones, cookies y middlewares con más precisión, aunque aún hay margen de mejora en cómo debuggeo errores de autenticación. Voy por buen camino y cada sprint el sistema es más sólido. 
+
+---
+
+
