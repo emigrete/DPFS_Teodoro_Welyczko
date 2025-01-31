@@ -102,6 +102,7 @@ El Sprint 4 fue clave en la implementación del CRUD de productos con JSON, lo q
 
 🔹Tomarme mas tiempo de descanso cuando un error no es facil de resolver
 🔹Evitar intentar solucionar problemas grandes sin antes dividirlo en problemas mas chicos, la funcion de filter la encare mal. 
+
 ---
 
 💡 Conclusión: Este sprint logro hacer que el sitio sea mas interactivo y mas real, toca mejorar en como se encaran los problemas en lo personal pero por lo demas considero que voy a buen ritmo 
