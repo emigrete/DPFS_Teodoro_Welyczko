@@ -1,20 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const isAdmin = require('../middlewares/isAdmin');
+const productsController = require("../controllers/productsController");
+const upload = require("../middlewares/upload"); // ✅ Importamos multer
 
 // 🔹 Middleware para manejar sesiones
 router.use((req, res, next) => {
-    res.locals.user = req.session.user || null; // Pasar usuario a todas las vistas
+    res.locals.user = req.session.user || null;
     next();
 });
 
 // 🏠 Página de inicio
-router.get("/", (req, res) => {
-    res.render("home", { title: "Inicio - ETECH" });
-});
+router.get("/", (req, res) => res.render("home", { title: "Inicio - ETECH" }));
 
 // 🛒 Carrito de compras
 router.get("/cart", (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login");
+    }
     let cart = [
         { id: 1, name: "Laptop Gamer", price: 1200, image: "laptop.jpg" },
         { id: 2, name: "Teclado Mecánico", price: 150, image: "teclado.jpg" },
@@ -24,75 +27,39 @@ router.get("/cart", (req, res) => {
 });
 
 // 🛍 Listado de productos
-router.get("/products/:id", (req, res) => {
-    let products = [
-        { id: 1, name: "Laptop Gamer", description: "Potente laptop para gaming y trabajo", price: 1200, image: "laptop.jpg" },
-        { id: 2, name: "Teclado Mecánico", description: "Teclado RGB con switches mecánicos", price: 150, image: "teclado.jpg" },
-        { id: 3, name: "Mouse Inalámbrico", description: "Mouse ergonómico y preciso", price: 50, image: "mouse.jpg" }
-    ];
-
-    let product = products.find(p => p.id == req.params.id);
-    
-    if (!product) {
-        return res.status(404).send("Producto no encontrado");
-    }
-
-    res.render("products/productDetail", { title: product.name, product });
-});
-
-// Todos los productos 
-
-router.get("/products", (req, res) => {
-
-    let products = [
-        { id: 1, name: "Laptop Gamer", description: "Potente laptop para gaming y trabajo", price: 1200, image: "laptop.jpg" },
-        { id: 2, name: "Teclado Mecánico", description: "Teclado RGB con switches mecánicos", price: 150, image: "teclado.jpg" },
-        { id: 3, name: "Mouse Inalámbrico", description: "Mouse ergonómico y preciso", price: 50, image: "mouse.jpg" }
-    ];
-
-    res.render("products/allProducts", { title: "Todos los productos", products });
-
-
-});
+router.get("/products", productsController.list);
 
 // 🛠 CREAR PRODUCTO (Solo Admins)
-router.get("/product/create", isAdmin, (req, res) => {
-    res.render("products/createProduct", { title: "Crear Producto - ETECH" });
-});
-
-router.post("/products/create", isAdmin, (req, res) => {
-    console.log(req.body); 
-    res.send("Producto creado con éxito (esto es temporal)");
-});
+router.get("/products/create", isAdmin, productsController.createForm);
+router.post("/products/create", isAdmin, upload.single("image"), productsController.create); // ✅ Agregado `upload.single("image")`
 
 // ✏️ EDITAR PRODUCTO (Solo Admins)
-router.get("/edit/:id", isAdmin, (req, res) => {
-    let product = { 
-        id: req.params.id, 
-        name: "Laptop Gamer", 
-        description: "Laptop potente para juegos y trabajo", 
-        price: 1200, 
-        category: "Electrónica",
-        color: "Negro",
-        image: "default.jpg"
-    };
+router.get("/products/:id/edit", isAdmin, productsController.editForm);
+router.post("/products/:id/edit", isAdmin, upload.single("image"), productsController.update);
 
-    res.render("products/editProduct", { title: "Editar Producto", product });
-});
+// 🗑 Eliminar producto (Solo Admins)
+router.post("/products/:id/delete", isAdmin, productsController.delete);
 
-router.post("/edit/:id", isAdmin, (req, res) => {
-    console.log(req.body);
-    res.send(`Producto con ID ${req.params.id} actualizado`);
-});
+// 🎨 Filtrar productos
+
+router.get("/products/filter", productsController.filter);
+
+
+// 🔍 Buscador de productos
+router.get("/products/search", productsController.search);
+
+// 🔎 Detalle de producto
+router.get("/products/:id", productsController.detail);
+
+
+
+
+
+
 
 // 🔑 AUTENTICACIÓN (Login y Registro)
-router.get("/register", (req, res) => {
-    res.render("users/register", { title: "Registro - ETECH" });
-});
-
-router.get("/login", (req, res) => {
-    res.render("users/login", { title: "Iniciar Sesión - ETECH" });
-});
+router.get("/register", (req, res) => res.render("users/register", { title: "Registro - ETECH" }));
+router.get("/login", (req, res) => res.render("users/login", { title: "Iniciar Sesión - ETECH" }));
 
 router.post("/login", (req, res) => {
     let users = [
@@ -103,10 +70,10 @@ router.post("/login", (req, res) => {
     let user = users.find(u => u.email === req.body.email && u.password === req.body.password);
 
     if (user) {
-        req.session.user = user; // Guardar usuario en sesión
-        res.redirect("/");  // Redirigir a la home
+        req.session.user = user;
+        res.redirect("/");
     } else {
-        res.send("Credenciales incorrectas");  // Mensaje si el login falla
+        res.send("Credenciales incorrectas");
     }
 });
 
@@ -116,7 +83,4 @@ router.get("/logout", (req, res) => {
     res.redirect("/");
 });
 
-
 module.exports = router;
-
-

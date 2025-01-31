@@ -1,8 +1,28 @@
 const express = require("express");
 const path = require("path");
 const session = require('express-session');
+const multer = require("multer");
+
 
 const app = express();
+
+
+// Configurar `multer` para manejar archivos
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "mi-ecommerce/src/public/images/products"); // 📂 Carpeta donde se guardarán las imágenes
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único
+    }
+});
+const upload = multer({ storage });
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 
 // Middleware para capturar datos del formulario
 app.use(session({

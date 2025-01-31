@@ -8,15 +8,18 @@
         <a href="/help">Ayuda</a>
 
         <% if (user && user.role === "admin") { %>
-            <a href="/product/create" class="admin-btn">➕ Crear Producto</a>
-            <a href="/edit/1" class="admin-btn">✏️ Editar Producto</a>
+            <a href="/products/create" class="admin-btn">➕ Crear Producto</a>
+            <a href="/products/1/edit" class="admin-btn">✏️ Editar Producto</a>
         <% } %>
     </nav>
 
     <div class="search-bar">
-        <input type="text" placeholder="Buscar...">
-        <button class="serch-button">🔍</button>
+        <form action="/products/search" method="GET">
+            <input type="text" name="query" placeholder="Buscar productos..." required>
+            <button type="submit" class="search-button">🔍</button>
+        </form>
     </div>
+    
 
     <div class="cart-login">
         <a href="/cart">🛒 Carrito</a>

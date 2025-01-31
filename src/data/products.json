@@ -1,0 +1,38 @@
+[
+  {
+    "id": 5,
+    "name": "Laptop",
+    "description": "adad",
+    "price": "13",
+    "category": "Laptops",
+    "color": "ada",
+    "image": "1738309397344.webp"
+  },
+  {
+    "id": 4,
+    "name": "Super Laptop ",
+    "description": "adad",
+    "price": "1234",
+    "category": "Accesorios",
+    "color": "jijiji",
+    "image": "1738309496598.webp"
+  },
+  {
+    "id": 3,
+    "name": "Laptop ",
+    "description": "Super laptop",
+    "price": "13123",
+    "category": "Laptops",
+    "color": "negro",
+    "image": "1738311722407.webp"
+  },
+  {
+    "id": 4,
+    "name": "Teclado mecanico",
+    "description": "Teclado mecanico super bueno ",
+    "price": "200",
+    "category": "Periféricos",
+    "color": "Negro",
+    "image": "1738335835988.webp"
+  }
+]
