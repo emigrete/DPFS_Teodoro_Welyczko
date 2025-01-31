@@ -1,6 +1,6 @@
 # 📌 Retrospectiva del Sprint 1
 
-Durante este sprint, reflexioné sobre lo que hice bien y lo que puedo mejorar en los siguientes sprints.
+Reflexioné sobre lo que hice bien y lo que puedo mejorar en los siguientes sprints.
 
 ## ⭐ Lo que salió bien
 ✅ Elegí una temática que realmente me gusta: **tecnología**. Esto hará que trabajar en el proyecto sea más motivador y entretenido.  
@@ -17,3 +17,30 @@ Durante este sprint, reflexioné sobre lo que hice bien y lo que puedo mejorar e
 ---
 
 💡 **Conclusión:** Para este sprint, voy a optimizar mi tiempo eligiendo mejor las herramientas y enfocándome en lo que realmente aporta valor a mi proyecto. 
+
+# 📌 Retrospectiva del Sprint 2
+
+##⭐ Lo que salió bien
+
+✅ Se completó la estructura HTML y CSS de todas las páginas principales.
+✅ Diseño coherente con los colores y la identidad visual de la empresa.
+✅ Mejora en la organización del CSS, separándolo en archivos por página.
+✅ Uso de GitHub para versionar el código correctamente.
+✅ Implementación de la navegación y el footer reutilizable en todas las páginas.
+
+##⚠️ Lo que puedo mejorar
+
+⏳ Optimización del código: Hay secciones HTML y CSS repetitivas que podrían modularizarse.
+📂 Estructura de carpetas: Algunos archivos pueden organizarse mejor en /views/partials/.
+🔄 Reutilización de componentes: El header y el footer deberían cargarse dinámicamente.
+📑 Código más limpio y ordenado: Evitar código innecesario en los estilos y mejorar la semántica del HTML.
+
+##🎯 Plan de mejora para Sprint 3
+
+🔹 Implementar EJS para hacer las vistas más dinámicas y reutilizar componentes.
+🔹 Separar las vistas en carpetas products/ y users/ para mayor claridad.
+🔹 Crear archivos parciales (partials/) para header, footer y head.
+
+---
+
+💡 **Conclusión:* Para este sprint, voy a concentrarme en no repetir codigo, modularizar bien y lograr un codigo mas limpio 
