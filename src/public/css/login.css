@@ -40,6 +40,24 @@ body {
     font-size: 16px;
 }
 
+/* Estilos para el checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 8px; /* Espacio entre checkbox y texto */
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff; /* Color azul para checkbox en navegadores modernos */
+    cursor: pointer;
+}
+
+
+
+
+
 /* Opciones de Recordarme y Olvidar Contraseña */
 .options {
     display: flex;
@@ -86,6 +104,7 @@ body {
     text-decoration: none;
     color: white;
     transition: 0.3s;
+    width: 95%;
 }
 
 .back-btn:hover {

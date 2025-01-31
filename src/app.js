@@ -2,9 +2,29 @@ const express = require("express");
 const path = require("path");
 const session = require('express-session');
 const multer = require("multer");
+const rememberMiddleware = require("./middlewares/rememberMiddleware");
+const cookieParser = require("cookie-parser"); // ⬅️ Importamos cookie-parser
 
 
 const app = express();
+
+
+// 📌 Configurar middleware de cookies
+app.use(cookieParser()); // ⬅️ Habilita la lectura de cookies
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// 📌 Configurar sesión
+app.use(session({
+    secret: "mi-secreto",
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+
+// usa el middleware de rememberMiddleware para recordar al usuario 
+app.use(rememberMiddleware);
 
 
 // Configurar `multer` para manejar archivos

@@ -1,11 +1,11 @@
 [
   {
     "id": 5,
-    "name": "Laptop",
-    "description": "adad",
-    "price": "13",
+    "name": "No es laptop ",
+    "description": "Nache",
+    "price": "1000000",
     "category": "Laptops",
-    "color": "ada",
+    "color": "negro",
     "image": "1738309397344.webp"
   },
   {
@@ -34,5 +34,32 @@
     "category": "Periféricos",
     "color": "Negro",
     "image": "1738335835988.webp"
+  },
+  {
+    "id": 5,
+    "name": "aa",
+    "description": "aaa",
+    "price": "123123",
+    "category": "Componentes",
+    "color": "Negro",
+    "image": "1738344175325.webp"
+  },
+  {
+    "id": 6,
+    "name": "Mouse Gamerrrrr",
+    "description": "El super mega mouse gamer que usa todo para ser gamer osea que es gamer digamos, no? ",
+    "price": "20000",
+    "category": "Periféricos",
+    "color": "Negro",
+    "image": "1738344945460.webp"
+  },
+  {
+    "id": 7,
+    "name": "Monitor",
+    "description": "Monitor re gamer ",
+    "price": "100000",
+    "category": "Monitores",
+    "color": "Negro ",
+    "image": "1738346035061.webp"
   }
 ]

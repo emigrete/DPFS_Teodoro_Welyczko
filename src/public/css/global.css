@@ -191,10 +191,10 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 23%;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 
 .product-card img {
@@ -228,6 +228,34 @@ main {
 .cart-login a:hover {
     background: #0056b3;
 }
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;  /* 📌 Tamaño del contenedor */
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white; /* Fondo para visibilidad */
+    margin-left: 10px;
+    border: 2px solid #ffffff;
+}
+
+.profile-link img {
+    width: 40px;  /* 📌 Tamaño fijo de la imagen */
+    height: 40px;
+    object-fit: cover; /* 📌 Evita que se deforme */
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-link:hover img {
+    transform: scale(1.1);
+}
+
+
+
 
 /* Footer */
 .footer {

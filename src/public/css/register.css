@@ -61,7 +61,8 @@ body {
 }
 
 .back-btn {
-    display: block;
+    display: flex;
+    justify-content: center;
     margin-top: 15px;
     background: #6c757d;
     text-align: center;
@@ -70,7 +71,9 @@ body {
     text-decoration: none;
     color: white;
     transition: 0.3s;
+    width: 95%;
 }
+
 
 .back-btn:hover {
     background: #5a6268;
@@ -100,4 +103,19 @@ body {
 
 .facebook-btn:hover {
     background: #2D4373;
+}
+
+.error-messages {
+    color: red;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    list-style: none;
+    text-align: center;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }

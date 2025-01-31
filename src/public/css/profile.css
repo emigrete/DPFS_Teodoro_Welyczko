@@ -1,0 +1,34 @@
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.container img {  /* Solo afecta imágenes dentro de .container */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    margin-top: 10px;
+}
+
+.container p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.container a.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    background-color: #d9534f;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.container a.btn:hover {
+    background-color: #c9302c;
+}

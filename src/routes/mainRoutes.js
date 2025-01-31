@@ -1,8 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const isAdmin = require('../middlewares/isAdmin');
+const isAdmin = require("../middlewares/adminMiddleware"); // ✅ Cambio de nombre
+
 const productsController = require("../controllers/productsController");
 const upload = require("../middlewares/upload"); // ✅ Importamos multer
+const usersRoutes = require("./usersRoutes");
+const authMiddleware = require("../middlewares/authMiddleware");
+
+// proteger la ruta de perfil
+router.get("/profile", authMiddleware, (req, res) => {
+    res.render("users/profile", { user: req.session.user });
+});
+
+
+// 📌 Rutas de usuarios
+router.use("/", usersRoutes);
 
 // 🔹 Middleware para manejar sesiones
 router.use((req, res, next) => {
@@ -51,31 +63,6 @@ router.get("/products/search", productsController.search);
 // 🔎 Detalle de producto
 router.get("/products/:id", productsController.detail);
 
-
-
-
-
-
-
-// 🔑 AUTENTICACIÓN (Login y Registro)
-router.get("/register", (req, res) => res.render("users/register", { title: "Registro - ETECH" }));
-router.get("/login", (req, res) => res.render("users/login", { title: "Iniciar Sesión - ETECH" }));
-
-router.post("/login", (req, res) => {
-    let users = [
-        { id: 1, firstName: "Admin", email: "admin@etech.com", password: "1234", role: "admin" },
-        { id: 2, firstName: "User", email: "user@etech.com", password: "1234", role: "user" }
-    ];
-
-    let user = users.find(u => u.email === req.body.email && u.password === req.body.password);
-
-    if (user) {
-        req.session.user = user;
-        res.redirect("/");
-    } else {
-        res.send("Credenciales incorrectas");
-    }
-});
 
 // 🚪 Cerrar sesión
 router.get("/logout", (req, res) => {

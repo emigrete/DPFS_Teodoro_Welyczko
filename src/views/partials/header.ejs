@@ -1,4 +1,4 @@
-<header id ="navbar" class="navbar">
+<header id="navbar" class="navbar">
     <div class="logo">LOGO</div>
 
     <nav class="nav-links">
@@ -9,7 +9,6 @@
 
         <% if (user && user.role === "admin") { %>
             <a href="/products/create" class="admin-btn">➕ Crear Producto</a>
-            <a href="/products/1/edit" class="admin-btn">✏️ Editar Producto</a>
         <% } %>
     </nav>
 
@@ -19,14 +18,14 @@
             <button type="submit" class="search-button">🔍</button>
         </form>
     </div>
-    
 
     <div class="cart-login">
-        <a href="/cart">🛒 Carrito</a>
+        <% if (user) { %>  
+            <a href="/cart">🛒 Carrito</a>  <!-- ✅ SOLO aparece si hay usuario -->
 
-        <% if (user) { %>
-            <span class="username">👤 <%= user.firstName %></span>
-            <a href="/logout" class="btn logout-btn">Cerrar Sesión</a>
+            <a href="/profile" class="profile-link">
+                <img src="/images/users/<%= user.image ? user.image : 'default.jpg' %>" alt="Perfil">
+            </a>
         <% } else { %>
             <a href="/login" class="btn login-btn">Ingresar</a>
         <% } %>

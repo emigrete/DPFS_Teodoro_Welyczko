@@ -2,21 +2,21 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-// 📌 Asegurar que la carpeta `public/images/products/` existe antes de guardar imágenes
-const uploadDir = path.join(__dirname, "../public/images/products");
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
+const getUploadPath = (type) => {
+    const uploadPath = path.join(__dirname, `../public/images/${type}`);
+    if (!fs.existsSync(uploadPath)) {
+        fs.mkdirSync(uploadPath, { recursive: true });
+    }
+    return uploadPath;
+};
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log("📂 Guardando en:", uploadDir); // ✅ Esto mostrará la ruta en la terminal
-        cb(null, uploadDir);
+        const type = req.body.type || "products"; // Usa "products" por defecto
+        cb(null, getUploadPath(type));
     },
     filename: (req, file, cb) => {
-        const filename = Date.now() + path.extname(file.originalname);
-        console.log("📸 Nombre de archivo generado:", filename); // ✅ Verifica el nombre
-        cb(null, filename);
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 

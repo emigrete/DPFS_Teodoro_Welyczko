@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% if (typeof title === 'undefined') { %>
+        <% title = "Mi Perfil - ETECH"; %> <!-- ✅ Asegurar que title tenga un valor -->
+    <% } %>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+
+    <main class="container">
+        <h1><strong>Bienvenido, <%= user.name %>!</strong></h1>
+
+        <img src="/images/users/<%= user.image ? user.image : 'default.jpg' %>" alt="Foto de perfil"
+        style="width: 150px; border-radius: 50%; border: 2px solid #000;">
+    
+
+        <p>Email: <%= user.email %></p>
+        <p>Rol: <%= user.role %></p>
+
+        <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
+    </main>
+
+    <%- include('../partials/footer'); %>
+</body>
+
+</html>
