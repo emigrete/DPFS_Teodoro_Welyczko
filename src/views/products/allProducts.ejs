@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+    <%- include('../partials/header'); %>
+
+    <main class="products-container">
+        <h1>Todos los Productos</h1>
+        <div class="product-grid">
+            <% products.forEach(product => { %>
+                <div class="product-card">
+                    <img src="/images/<%= product.image %>" alt="<%= product.name %>">
+                    <h3><%= product.name %></h3>
+                    <p class="price">$<%= product.price %></p>
+                    <a href="/products/<%= product.id %>" class="btn">Ver Detalle</a>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <%- include('../partials/footer'); %>
+</body>
+</html>

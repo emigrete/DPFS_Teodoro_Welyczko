@@ -11,9 +11,16 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #0A192F; /* Color de fondo consistente */
+    background-color:  #0A192F; /* Color de fondo consistente */
     color: #EAEAEA; /* Color de texto consistente */
+    padding-top: 80px; /* Asegura que el contenido no se oculte detrás de la barra de navegación */
+    
+}
+
+main {
+    flex: 1;
 }
 
 .container {
@@ -26,11 +33,12 @@ body {
 
 /* Navbar */
 .navbar {
+    position: absolute; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1E3A8A;
-    padding: 15px;
+    background: linear-gradient(90deg, #3B82F6, #1E3A8A);
+    padding: 20px;
     color: white;
     flex-wrap: wrap;
     position: fixed;
@@ -38,6 +46,16 @@ body {
     width: 100%;
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar.sticky {
+    position: fixed;  /* Se vuelve fija después de scroll */
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1E3A8A, #0056b3);
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -74,6 +92,61 @@ body {
     margin: 3px;
 }
 
+.cart-login {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-login a {
+    display: flex; /* Asegura que los botones tengan el mismo comportamiento */
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: #007BFF;
+    padding: 8px 12px; /* Asegurar que todos los botones tengan el mismo padding */
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 16px; /* Asegura el mismo tamaño de fuente */
+    height: 40px; /* Asegura que el alto de todos los botones sea el mismo */
+    line-height: 40px; /* Centra el texto verticalmente */
+}
+
+.cart-login a:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Asegurar que el botón del carrito sea igual a los demás */
+.cart-login a:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    height: 40px;
+    line-height: 40px;
+
+    transition: 0.3s;
+
+}
+.admin-btn {
+    background: #ffcc00;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.admin-btn:hover {
+    background: #ff9900;
+    transform: scale(1.05);
+}
+
+
 /* Grid de Productos */
 .product-grid {
     display: flex;
@@ -96,11 +169,30 @@ body {
     transform: translateY(-10px);
 }
 
+.cart-login {
+    display: flex;
+    gap: 15px;
+}
+
+.cart-login a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: #007BFF;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.cart-login a:hover {
+    background: #0056b3;
+}
+
 /* Footer */
 .footer {
-    background: #1E3A8A;
+    background: #1F2937;
     color: white;
     text-align: center;
     padding: 15px;
-    margin-top: auto;
+    width: 100%;
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+
+    <%- include('../partials/header'); %>
+
+    <section class="cart-container">
+        <h2>Carrito de Compras</h2>
+        <div class="cart-items">
+            <% if (cart.length > 0) { %>
+                <% cart.forEach(product => { %>
+                    <div class="cart-item">
+                        <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
+                        <div class="item-details">
+                            <h3><%= product.name %></h3>
+                            <p>Precio: $<%= product.price %></p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="btn">+</button>
+                            <span>1</span>
+                            <button class="btn">-</button>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>El carrito está vacío.</p>
+            <% } %>
+        </div>
+        <a href="/">
+            <button class="btn checkout-btn">Seguir Comprando</button>
+        </a>
+    </section>
+
+    <%- include('../partials/footer'); %>
+
+</body>
+</html>

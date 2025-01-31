@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/createProduct.css">
+</head>
+<body>
+    <%- include('../partials/header'); %>
+    <section class="main-container">
+    <div class="create-product-container">
+        <h2>Crear Producto</h2>
+        <form action="/product/create" method="POST" enctype="multipart/form-data">
+            <div class="input-group">
+                <label for="name">Nombre del Producto</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="price">Precio</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div class="input-group">
+                <label for="image">Imagen del Producto</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            <div class="input-group">
+                <label for="category">Categoria</label>
+                <input type="text" id="Categoria" name="Categoria"  required>
+            </div>
+            <div class="input-group">
+                <label for="color">Color</label>
+                <input type="text" id="Color" name="Color"  required>
+            </div>
+
+            <button type="submit" class="btn">Crear Producto</button>
+        </form>
+        <a href="/" class="btn back-btn">Volver al Inicio</a>
+    </div>
+</section>
+
+    <%- include('../partials/footer'); %>
+</body>
+</html>
