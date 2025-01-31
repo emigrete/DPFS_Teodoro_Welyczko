@@ -20,7 +20,7 @@ Reflexioné sobre lo que hice bien y lo que puedo mejorar en los siguientes spri
 
 # 📌 Retrospectiva del Sprint 2
 
-##⭐ Lo que salió bien
+## ⭐ Lo que salió bien
 
 ✅ Se completó la estructura HTML y CSS de todas las páginas principales.
 ✅ Diseño coherente con los colores y la identidad visual de la empresa.
@@ -28,14 +28,14 @@ Reflexioné sobre lo que hice bien y lo que puedo mejorar en los siguientes spri
 ✅ Uso de GitHub para versionar el código correctamente.
 ✅ Implementación de la navegación y el footer reutilizable en todas las páginas.
 
-##⚠️ Lo que puedo mejorar
+## ⚠️ Lo que puedo mejorar
 
 ⏳ Optimización del código: Hay secciones HTML y CSS repetitivas que podrían modularizarse.
 📂 Estructura de carpetas: Algunos archivos pueden organizarse mejor en /views/partials/.
 🔄 Reutilización de componentes: El header y el footer deberían cargarse dinámicamente.
 📑 Código más limpio y ordenado: Evitar código innecesario en los estilos y mejorar la semántica del HTML.
 
-##🎯 Plan de mejora para Sprint 3
+## 🎯 Plan de mejora para Sprint 3
 
 🔹 Implementar EJS para hacer las vistas más dinámicas y reutilizar componentes.
 🔹 Separar las vistas en carpetas products/ y users/ para mayor claridad.
