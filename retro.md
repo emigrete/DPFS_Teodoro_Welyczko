@@ -140,4 +140,33 @@ Este Sprint se enfocó en la implementación del sistema de usuarios, incluyendo
 
 ---
 
+# 📌 Retrospectiva del Sprint 6
+Este Sprint estuvo enfocado en migrar el proyecto de archivos JSON a una base de datos con Sequelize, asegurando que la estructura sea sólida y compatible con el CRUD de productos y usuarios. También mejoramos la autenticación, el carrito y la búsqueda dinámica de productos.
 
+## ⭐ Lo que salió bien
+✅ Migración completa de los datos de JSON a MySQL con Sequelize.
+✅ Configuración de Sequelize con modelos, relaciones y migraciones correctamente establecidas.
+✅ Seeders bien estructurados para poblar la base de datos con categorías, productos, marcas y usuarios.
+✅ CRUD de productos y usuarios funcionando completamente con Sequelize.
+✅ Autenticación con sesiones y cookies integrada con la base de datos.
+✅ Middleware de autenticación y autorización optimizados para mejorar la seguridad.
+✅ Filtros de búsqueda por categoría, marca y color funcionando dinámicamente.
+✅ Navbar dinámica basada en el estado del usuario (logueado o no).
+✅ Interfaz de usuario mejorada con formularios que cargan dinámicamente categorías, marcas y colores desde la base de datos.
+✅ Corrección de errores en la asignación de IDs en seeders, asegurando un orden correcto en la inserción de datos.
+
+## ⚠️ Lo que puedo mejorar
+🔹 Orden de ejecución de los seeders: Perdi tiempo porque algunos datos no se insertaban correctamente debido a claves foráneas.
+🔹 Errores con IDs auto-incrementales: Fue necesario resetear los contadores para evitar IDs muy altos en cada rollback.
+🔹 Optimización del proceso de autenticación: Al principio había problemas con sesiones y cookies que costaron debugging.
+🔹 Mejor manejo de validaciones en formularios: Algunos errores podrían mostrarse de forma más clara en el frontend.
+🔹 Mejorar la documentación de las relaciones en los modelos para evitar confusión al modificar la base de datos.
+
+## 🎯 Plan de mejora para Sprint 7
+🔹 Automatizar la ejecución de seeders para evitar problemas con el orden.
+🔹 Optimizar la validación de formularios para mejorar la experiencia del usuario.
+🔹 Hacer un mejor manejo de errores en Sequelize, evitando que crashee la app cuando hay problemas de conexión.
+🔹 Seguir mejorando la UI, agregando más opciones en la búsqueda y refinando la experiencia del carrito de compras.
+🔹 Integrar un sistema de roles para diferenciar entre administradores y usuarios normales.
+
+💡 Conclusión: Este Sprint fue un gran avance en la estructuración del proyecto, pasando de archivos JSON a una base de datos completamente funcional con Sequelize. Aprendí mucho sobre migraciones, seeders y relaciones en SQL, aunque aún hay margen de mejora en el manejo de errores y validaciones. 
