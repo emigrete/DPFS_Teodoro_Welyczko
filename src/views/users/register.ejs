@@ -24,9 +24,15 @@
                 <input type="file" id="image" name="image" accept="image/*">
             </div>
             <div class="input-group">
-                <label for="name">Nombre Completo</label>
-                <input type="text" id="name" name="name" required>
+                <label for="firstName">Nombre</label>
+                <input type="text" id="firstName" name="firstName" required>
             </div>
+            
+            <div class="input-group">
+                <label for="lastName">Apellido</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            
             <div class="input-group">
                 <label for="email">Correo Electrónico</label>
                 <input type="email" id="email" name="email" value="<%= oldData ? oldData.email : '' %>" required>

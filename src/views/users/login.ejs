@@ -19,9 +19,9 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="checkbox-group">
-                <input type="checkbox" id="remember" name="remember">
+                <input type="checkbox" id="remember" name="remember" <%= oldData && oldData.remember ? "checked" : "" %>>
                 <label for="remember">Recordarme</label>
-            </div>            
+            </div>                      
             <button type="submit" class="btn">Ingresar</button>
             <div class="social-login">
                 <button class="btn google-btn">Iniciar sesión con Google</button>

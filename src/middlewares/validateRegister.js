@@ -1,9 +1,17 @@
 const { body } = require("express-validator");
+const db = require("../database/models");
 
 module.exports = [
-    body("name").notEmpty().withMessage("El nombre es obligatorio."),
+    body("firstName").notEmpty().withMessage("El nombre es obligatorio."),
+    body("lastName").notEmpty().withMessage("El apellido es obligatorio."),
     body("email")
-        .isEmail().withMessage("Debes ingresar un email válido."),
+        .isEmail().withMessage("Debes ingresar un email válido.")
+        .custom(async (value) => {
+            const existingUser = await db.User.findOne({ where: { email: value } });
+            if (existingUser) {
+                throw new Error("Este email ya está registrado.");
+            }
+        }),
     body("password")
         .isLength({ min: 6 }).withMessage("La contraseña debe tener al menos 6 caracteres."),
     body("confirm-password")

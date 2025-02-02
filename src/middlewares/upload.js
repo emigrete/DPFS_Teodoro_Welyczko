@@ -2,8 +2,8 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const getUploadPath = (type) => {
-    const uploadPath = path.join(__dirname, `../public/images/${type}`);
+const getUploadPath = (folder) => {
+    const uploadPath = path.join(__dirname, `../public/images/${folder}`);
     if (!fs.existsSync(uploadPath)) {
         fs.mkdirSync(uploadPath, { recursive: true });
     }
@@ -12,8 +12,9 @@ const getUploadPath = (type) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const type = req.body.type || "products"; // Usa "products" por defecto
-        cb(null, getUploadPath(type));
+        let folder = "products"; // Por defecto, guarda en productos
+        if (req.originalUrl.includes("register")) folder = "users";
+        cb(null, getUploadPath(folder));
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));

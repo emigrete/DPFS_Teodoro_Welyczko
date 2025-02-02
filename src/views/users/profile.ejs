@@ -13,7 +13,7 @@
     <%- include('../partials/header'); %>
 
     <main class="container">
-        <h1><strong>Bienvenido, <%= user.name %>!</strong></h1>
+        <h1><strong>Bienvenido, <%= user.firstName %> <%= user.lastName %>!</strong></h1>
 
         <img src="/images/users/<%= user.image ? user.image : 'default.jpg' %>" alt="Foto de perfil"
         style="width: 150px; border-radius: 50%; border: 2px solid #000;">

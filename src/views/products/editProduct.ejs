@@ -31,14 +31,12 @@
                 </div>
                 <div class="input-group">
                     <label for="category">Categoría</label>
-                    <select id="category" name="category" required>
-                        <option value="">Seleccionar categoría</option>
-                        <option value="Laptops">Laptops</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Periféricos">Periféricos</option>
-                        <option value="Monitores">Monitores</option>
-                        <option value="Componentes">Componentes</option>
+                    <select id="category" name="categoryId" required>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>" <%= product.categoryId === category.id ? 'selected' : '' %>><%= category.name %></option>
+                        <% }); %>
                     </select>
+                    
                 </div>
                 
                 <div class="input-group">

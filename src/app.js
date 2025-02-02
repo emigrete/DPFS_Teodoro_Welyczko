@@ -1,88 +1,62 @@
 const express = require("express");
 const path = require("path");
-const session = require('express-session');
+const session = require("express-session");
 const multer = require("multer");
+const cookieParser = require("cookie-parser");
 const rememberMiddleware = require("./middlewares/rememberMiddleware");
-const cookieParser = require("cookie-parser"); // ⬅️ Importamos cookie-parser
-
 
 const app = express();
 
-
-// 📌 Configurar middleware de cookies
-app.use(cookieParser()); // ⬅️ Habilita la lectura de cookies
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// 📌 Configurar sesión
+// 📌 Middleware de cookies y sesiones
+app.use(cookieParser());
 app.use(session({
     secret: "mi-secreto",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 60 * 1000 } // 🔹 Sesión expira en 30 min
 }));
 
-
-
-// usa el middleware de rememberMiddleware para recordar al usuario 
+// 📌 Middleware para recordar usuario SIEMPRE después de configurar la sesión
 app.use(rememberMiddleware);
 
+// 📌 Middleware para hacer que `user` esté disponible en todas las vistas
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
 
-// Configurar `multer` para manejar archivos
+// 📌 Middleware para procesar formularios
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// 📌 Configurar `multer` para manejar imágenes
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "mi-ecommerce/src/public/images/products"); // 📂 Carpeta donde se guardarán las imágenes
+        let folder = "products"; // 📂 Carpeta por defecto
+        if (req.originalUrl.includes("register")) folder = "users";
+        cb(null, path.join(__dirname, `public/images/${folder}`));
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único
+        cb(null, Date.now() + path.extname(file.originalname)); // 🔹 Nombre único
     }
 });
 const upload = multer({ storage });
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-
-
-// Middleware para capturar datos del formulario
-app.use(session({
-    secret: 'secreto123',  // Clave secreta para firmar la sesión
-    resave: false,
-    saveUninitialized: false
-}));
-
-
-// Middleware para procesar formularios
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-
-// Middleware para manejar sesiones 
-app.use((req, res, next) => {
-    res.locals.user = req.session.user || null;  // Hace que "user" esté disponible en todas las vistas
-    next();
-});
-
-
-
-
-// Configurar EJS como motor de plantillas
+// 📌 Configuración del motor de vistas
 app.set("view engine", "ejs");
-
-// Definir la carpeta de vistas
 app.set("views", path.join(__dirname, "views"));
 
-// Middleware para servir archivos estáticos (CSS, imágenes, JS)
+// 📌 Middleware para servir archivos estáticos (CSS, imágenes, JS)
 app.use(express.static(path.join(__dirname, "public")));
 
-// Importar rutas
+// 📌 Importar rutas
 const mainRoutes = require("./routes/mainRoutes");
 
-// Usar las rutas
+// 📌 Usar las rutas
 app.use("/", mainRoutes);
 
-// Configurar el puerto y levantar el servidor
+// 📌 Configurar el puerto y levantar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
