@@ -1,17 +1,34 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: { type: DataTypes.STRING, unique: true },
-    password: DataTypes.STRING,
-    role: { type: DataTypes.ENUM('admin', 'user'), defaultValue: 'user' },
-    image: DataTypes.STRING
-  }, {});
-
-  User.associate = function(models) {
-    User.hasMany(models.Cart, { foreignKey: 'userId', as: 'carts' });
-  };
+  const User = sequelize.define("User", {
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    role: {
+      type: DataTypes.ENUM("admin", "user"),
+      defaultValue: "user"
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
+  });
 
   return User;
 };

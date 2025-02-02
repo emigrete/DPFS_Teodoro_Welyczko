@@ -1,26 +1,30 @@
 'use strict';
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   up: async (queryInterface) => {
-    return queryInterface.bulkInsert('users', [
+    await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+    await queryInterface.bulkDelete('Users', null, {}); 
+    await queryInterface.sequelize.query('ALTER TABLE Users AUTO_INCREMENT = 1');
+
+    return queryInterface.bulkInsert('Users', [
       {
-        firstName: 'Admin',
-        lastName: 'User',
-        email: 'admin@example.com',
-        password: bcrypt.hashSync('admin123', 10),
-        role: 'admin',
-        image: 'default.jpg',
+        firstName: "Admin",
+        lastName: "ETECH",
+        email: "admin@etech.com",
+        password: bcrypt.hashSync("admin123", 10),
+        role: "admin",
+        image: "admin.jpg",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john@example.com',
-        password: bcrypt.hashSync('password123', 10),
-        role: 'user',
-        image: 'default.jpg',
+        firstName: "Teodoro",
+        lastName: "Gamer",
+        email: "teo@etech.com",
+        password: bcrypt.hashSync("teogamer123", 10),
+        role: "user",
+        image: "teodoro.jpg",
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -28,6 +32,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    return queryInterface.bulkDelete('users', null, {});
+    await queryInterface.bulkDelete('Users', null, {});
   }
 };

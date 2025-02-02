@@ -2,14 +2,20 @@
 
 module.exports = {
   up: async (queryInterface) => {
-    return queryInterface.bulkInsert('colors', [
-      { name: 'Red', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Blue', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Black', createdAt: new Date(), updatedAt: new Date() }
+    await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+    await queryInterface.bulkDelete('Colors', null, {}); 
+    await queryInterface.sequelize.query('ALTER TABLE Colors AUTO_INCREMENT = 1');
+
+    return queryInterface.bulkInsert('Colors', [
+      { name: 'Negro', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Blanco', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Rojo', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Azul', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Verde', createdAt: new Date(), updatedAt: new Date() }
     ]);
   },
 
   down: async (queryInterface) => {
-    return queryInterface.bulkDelete('colors', null, {});
+    await queryInterface.bulkDelete('Colors', null, {});
   }
 };

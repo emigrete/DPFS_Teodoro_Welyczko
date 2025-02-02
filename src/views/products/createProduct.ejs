@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <%- include('../partials/head'); %>
-        <link rel="stylesheet" href="/css/profile.css">
-    </head>
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/createProduct.css">
+</head>
 <body>
     <%- include('../partials/header'); %>
     <section class="main-container">
-    <div class="create-product-container">
-        <h2>Crear Producto</h2>
-        <form action="/products/create" method="POST" enctype="multipart/form-data">
-            <div class="input-group">
-                <label for="name">Nombre del Producto</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="input-group">
-                <label for="description">Descripción</label>
-                <textarea id="description" name="description" required></textarea>
-            </div>
-            <div class="input-group">
-                <label for="price">Precio</label>
-                <input type="number" id="price" name="price" required>
-            </div>
-            <div class="input-group">
-                <label for="image">Imagen del Producto</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
-            </div>
-            <div class="input-group">
-                <label for="category">Categoría</label>
-                <select id="category" name="categoryId" required>
-                    <option value="">Seleccionar categoría</option>
-                    <% categories.forEach(category => { %>
-                        <option value="<%= category.id %>"><%= category.name %></option>
-                    <% }); %>
-                </select>                
-            </div>            
-            <div class="input-group">
-                <label for="color">Color</label>
-                <input type="text" id="color" name="color" required>
-            </div>
+        <div class="create-product-container">
+            <h2>Crear Producto</h2>
+            <form action="/products/create" method="POST" enctype="multipart/form-data">
+                
+                <div class="input-group">
+                    <label for="name">Nombre del Producto</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-            <button type="submit" class="btn">Crear Producto</button>
-        </form>
-        <a href="/" class="btn back-btn">Volver al Inicio</a>
-    </div>
-</section>
+                <div class="input-group">
+                    <label for="description">Descripción</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="price">Precio</label>
+                    <input type="number" id="price" name="price" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="image">Imagen del Producto</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="category">Categoría</label>
+                    <select id="category" name="categoryId" required>
+                        <option value="">Seleccionar categoría</option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="brand">Marca</label>
+                    <select id="brand" name="brandId" required>
+                        <option value="">Seleccionar marca</option>
+                        <% brands.forEach(brand => { %>
+                            <option value="<%= brand.id %>"><%= brand.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="color">Color</label>
+                    <select id="color" name="colorId" required>
+                        <option value="">Seleccionar color</option>
+                        <% colors.forEach(color => { %>
+                            <option value="<%= color.id %>"><%= color.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Crear Producto</button>
+            </form>
+            <a href="/" class="btn back-btn">Volver al Inicio</a>
+        </div>
+    </section>
 
     <%- include('../partials/footer'); %>
 </body>

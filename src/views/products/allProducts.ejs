@@ -14,11 +14,12 @@
         <form action="/products/filter" method="GET" class="filter-form">
             <label for="category">Filtrar por categoría:</label>
             <select name="category" id="category" onchange="this.form.submit()">
-                <option value="" <%= category === "" ? 'selected' : '' %>>Todas</option>
-                <option value="Laptops" <%= category === "Laptops" ? 'selected' : '' %>>Laptops</option>
-                <option value="Accesorios" <%= category === "Accesorios" ? 'selected' : '' %>>Accesorios</option>
-                <option value="Periféricos" <%= category === "Periféricos" ? 'selected' : '' %>>Periféricos</option>
+                <option value="" <%= !category ? 'selected' : '' %>>Todas</option>
+                <% categories.forEach(cat => { %>
+                    <option value="<%= cat.id %>" <%= category == cat.id ? 'selected' : '' %>><%= cat.name %></option>
+                <% }); %>
             </select>
+            
         </form>
         
         <div class="product-grid">

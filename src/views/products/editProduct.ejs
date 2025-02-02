@@ -15,20 +15,24 @@
                     <label for="name">Nombre del Producto</label>
                     <input type="text" id="name" name="name" value="<%= product.name %>" required>
                 </div>
+
                 <div class="input-group">
                     <label for="description">Descripción</label>
                     <textarea id="description" name="description" required><%= product.description %></textarea>
                 </div>
+
                 <div class="input-group">
                     <label for="price">Precio</label>
                     <input type="number" id="price" name="price" value="<%= product.price %>" required>
                 </div>
+
                 <div class="input-group">
                     <label for="image">Imagen del Producto</label>
                     <input type="file" id="image" name="image" accept="image/*">
                     <p>Imagen actual:</p>
                     <img src="/images/products/<%= product.image %>" alt="<%= product.name %>" style="max-width: 100px; margin-top: 10px;">
                 </div>
+
                 <div class="input-group">
                     <label for="category">Categoría</label>
                     <select id="category" name="categoryId" required>
@@ -36,13 +40,26 @@
                             <option value="<%= category.id %>" <%= product.categoryId === category.id ? 'selected' : '' %>><%= category.name %></option>
                         <% }); %>
                     </select>
-                    
                 </div>
-                
+
+                <div class="input-group">
+                    <label for="brand">Marca</label>
+                    <select id="brand" name="brandId" required>
+                        <% brands.forEach(brand => { %>
+                            <option value="<%= brand.id %>" <%= product.brandId === brand.id ? 'selected' : '' %>><%= brand.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
                 <div class="input-group">
                     <label for="color">Color</label>
-                    <input type="text" id="color" name="color" value="<%= product.color %>" required>
+                    <select id="color" name="colorId" required>
+                        <% colors.forEach(color => { %>
+                            <option value="<%= color.id %>" <%= product.colorId === color.id ? 'selected' : '' %>><%= color.name %></option>
+                        <% }); %>
+                    </select>
                 </div>
+
                 <button type="submit" class="btn">Guardar Cambios</button>
             </form>
             <a href="/" class="btn back-btn">Volver al Inicio</a>
