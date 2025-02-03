@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const usersController = require("../controllers/usersController");
 const upload = require("../middlewares/upload");
-const validateRegister = require("../middlewares/validateRegister");
+const validateRegister = require("../middlewares/validateLogin-Register");
 const guestMiddleware = require("../middlewares/guestMiddleware");
 const authMiddleware = require("../middlewares/authMiddleware");
 

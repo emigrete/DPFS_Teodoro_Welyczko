@@ -1,3 +1,4 @@
+const { validationResult } = require("express-validator");
 const db = require("../database/models");
 
 const productsController = {
@@ -107,6 +108,8 @@ const productsController = {
             res.render("products/createProduct", {
                 title: "Crear Producto",
                 categories,
+                errors: {},  // ✅ Aseguramos que siempre haya un objeto de errores
+                oldData: {},  // ✅ Aseguramos que siempre haya un objeto de datos antiguos
                 brands,  // ✅ Pasamos marcas a la vista
                 colors   // ✅ Pasamos colores a la vista
             });
@@ -118,20 +121,42 @@ const productsController = {
 
     // 🆕 Crear un producto
     create: async (req, res) => {
+        const errors = validationResult(req);
+    
+        if (!errors.isEmpty()) {
+            const categories = await db.Category.findAll();
+            const brands = await db.Brand.findAll();
+            const colors = await db.Color.findAll();
+    
+            return res.render("products/createProduct", {
+                title: "Crear Producto",
+                errors: errors.mapped(),  // ✅ Enviamos los errores
+                oldData: req.body,        // ✅ Mantenemos los datos ingresados
+                categories,
+                brands,
+                colors
+            });
+        }
+    
         try {
             await db.Product.create({
                 name: req.body.name,
                 description: req.body.description,
                 price: req.body.price,
+                originalPrice: req.body.originalPrice || req.body.price,
+                discountedPrice: req.body.discountedPrice || null,
                 categoryId: req.body.categoryId,
-                brandId: req.body.brandId || null,  // ✅ Capturar correctamente brandId
-                colorId: req.body.colorId || null,  // ✅ Capturar correctamente colorId
-                image: req.file ? req.file.filename : "default.jpg"
+                brandId: req.body.brandId,
+                colorId: req.body.colorId,
+                image: req.file ? req.file.filename : "default.jpg",
+                isDiscounted: req.body.isDiscounted ? true : false,
+                isFeatured: req.body.isFeatured ? true : false
             });
-
+    
             res.redirect("/products");
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            console.error("❌ Error al crear el producto:", error);
+            res.status(500).send("Error interno del servidor");
         }
     },
 
@@ -148,6 +173,8 @@ const productsController = {
 
             res.render("products/editProduct", {
                 title: "Editar Producto",
+                errors: {},  // ✅ Aseguramos que siempre haya un objeto de errores
+                oldData: {},  // ✅ Pasamos los datos del producto
                 product,
                 categories,
                 brands,  // ✅ Pasamos marcas a la vista
@@ -161,10 +188,29 @@ const productsController = {
 
     // 🔄 Actualizar un producto
     update: async (req, res) => {
+        const errors = validationResult(req);
+    
+        if (!errors.isEmpty()) {
+            const categories = await db.Category.findAll();
+            const brands = await db.Brand.findAll();
+            const colors = await db.Color.findAll();
+            const product = await db.Product.findByPk(req.params.id);
+    
+            return res.render("products/editProduct", {
+                title: "Editar Producto",
+                errors: errors.mapped(),
+                oldData: req.body,
+                product,
+                categories,
+                brands,
+                colors
+            });
+        }
+    
         try {
             const product = await db.Product.findByPk(req.params.id);
             if (!product) return res.status(404).send("Producto no encontrado");
-
+    
             await product.update({
                 name: req.body.name,
                 description: req.body.description,
@@ -172,16 +218,16 @@ const productsController = {
                 originalPrice: req.body.originalPrice || product.originalPrice,
                 discountedPrice: req.body.discountedPrice || product.price,
                 categoryId: req.body.categoryId,
-                brandId: req.body.brandId || null,
-                colorId: req.body.colorId || null,
+                brandId: req.body.brandId,
+                colorId: req.body.colorId,
                 image: req.file ? req.file.filename : product.image,
                 isFeatured: req.body.isFeatured ? true : false,
                 isDiscounted: req.body.isDiscounted ? true : false
             });
-
+    
             res.redirect("/products");
         } catch (error) {
-            console.error("Error al actualizar el producto:", error);
+            console.error("❌ Error al actualizar el producto:", error);
             res.status(500).json({ error: error.message });
         }
     },

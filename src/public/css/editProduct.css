@@ -110,3 +110,20 @@ a.btn.back-btn {
 a.btn.back-btn:hover {
     background: #5a6268;
 }
+
+.error-messages {
+    color: red;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+

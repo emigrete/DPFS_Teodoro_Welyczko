@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const usersController = {
-    
+
     // 📌 Mostrar formulario de registro
     registerForm: (req, res) => {
         res.render("users/register", {
@@ -37,7 +37,7 @@ const usersController = {
 
         try {
             const newUser = await db.User.create({
-                firstName: req.body.firstName,  
+                firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
@@ -129,37 +129,38 @@ const usersController = {
 
     // 📌 Mostrar formulario de login
     loginForm: (req, res) => {
-        res.render("users/login", { title: "Iniciar Sesión - ETECH", oldData: {} }); 
+        res.render("users/login", {
+            title: "Iniciar Sesión - ETECH",
+            errors: {},  // ✅ Se asegura de que errors siempre esté definido
+            oldData: {}   // ✅ Para evitar fallos en la vista
+        });
     },
-
     // 📌 Procesar login
     login: async (req, res) => {
         try {
             console.log("🔍 Intentando login con:", req.body.email);
 
+            let errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.render("users/login", {
+                    title: "Iniciar Sesión - ETECH",
+                    errors: errors.mapped(),
+                    oldData: req.body
+                });
+            }
+
             let user = await db.User.findOne({ where: { email: req.body.email } });
 
-            if (!user) {
-                console.log("❌ Usuario no encontrado en la base de datos.");
+            if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
+                console.log("❌ Credenciales incorrectas.");
                 return res.render("users/login", {
                     title: "Iniciar Sesión - ETECH",
-                    error: "Correo o contraseña incorrectos",
+                    errors: { email: { msg: "Correo o contraseña incorrectos" } },
                     oldData: req.body
                 });
             }
 
-            console.log("✅ Usuario encontrado:", user.email);
-
-            if (!bcrypt.compareSync(req.body.password, user.password)) {
-                console.log("❌ Contraseña incorrecta.");
-                return res.render("users/login", {
-                    title: "Iniciar Sesión - ETECH",
-                    error: "Correo o contraseña incorrectos",
-                    oldData: req.body
-                });
-            }
-
-            console.log("🔐 Contraseña correcta, iniciando sesión...");
+            console.log("✅ Usuario autenticado:", user.email);
 
             req.session.user = {
                 id: user.id,

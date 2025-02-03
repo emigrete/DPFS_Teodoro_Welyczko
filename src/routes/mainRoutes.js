@@ -5,6 +5,8 @@ const productsController = require("../controllers/productsController");
 const upload = require("../middlewares/upload");
 const usersRoutes = require("./usersRoutes");
 const authMiddleware = require("../middlewares/authMiddleware");
+const validateProduct = require("../middlewares/validateProduct");
+
 
 // 📌 Protección de perfil (Solo usuarios logueados pueden acceder)
 router.get("/profile", authMiddleware, (req, res) => {
@@ -26,9 +28,9 @@ router.get("/", productsController.home);
 // 📌 Rutas de productos
 router.get("/products", productsController.list);
 router.get("/products/create", isAdmin, productsController.createForm);
-router.post("/products/create", isAdmin, upload.single("image"), productsController.create);
+router.post("/products/create", upload.single("image"), validateProduct, productsController.create);   
 router.get("/products/:id/edit", isAdmin, productsController.editForm);
-router.post("/products/update/:id", isAdmin, upload.single("image"), productsController.update);  // ✅ RUTA CORREGIDA
+router.post("/products/update/:id", upload.single("image"), validateProduct, productsController.update);
 router.post("/products/:id/delete", isAdmin, productsController.delete);
 router.get("/products/filter", productsController.filter);
 router.get("/products/search", productsController.search);

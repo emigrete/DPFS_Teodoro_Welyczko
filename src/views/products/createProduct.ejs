@@ -10,16 +10,31 @@
     <section class="main-container">
         <div class="create-product-container">
             <h2>Crear Producto</h2>
+            <% if (errors && Object.keys(errors).length > 0) { %>
+                <ul class="error-messages">
+                    <% for (let error in errors) { %>
+                        <li><%= errors[error].msg %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+            
             <form action="/products/create" method="POST" enctype="multipart/form-data">
 
                 <div class="input-group">
                     <label for="name">Nombre del Producto</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" value="<%= oldData ? oldData.name : '' %>" required>
+                    <% if (errors && errors.name) { %>
+                        <p class="error-text"><%= errors.name.msg %></p>
+                    <% } %>
                 </div>
+                
 
                 <div class="input-group">
                     <label for="description">Descripción</label>
-                    <textarea id="description" name="description" required></textarea>
+                    <textarea id="description" name="description" required><%= oldData ? oldData.description : '' %></textarea>
+                    <% if (errors && errors.description) { %>
+                        <p class="error-text"><%= errors.description.msg %></p>
+                    <% } %>
                 </div>
 
                 <div class="input-group">
@@ -34,12 +49,19 @@
 
                 <div class="input-group">
                     <label for="price">Precio Final</label>
-                    <input type="number" id="price" name="price" step="0.01" required>
+                    <input type="number" id="price" name="price" step="0.01" value="<%= oldData ? oldData.price : '' %>" required>
+                    <% if (errors && errors.price) { %>
+                        <p class="error-text"><%= errors.price.msg %></p>
+                    <% } %>
                 </div>
+
 
                 <div class="input-group">
                     <label for="image">Imagen del Producto</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <input type="file" id="image" name="image" accept="image/*">
+                    <% if (errors && errors.image) { %>
+                        <p class="error-text"><%= errors.image.msg %></p>
+                    <% } %>
                 </div>
 
                 <div class="input-group">
@@ -47,9 +69,12 @@
                     <select id="category" name="categoryId" required>
                         <option value="">Seleccionar categoría</option>
                         <% categories.forEach(category => { %>
-                            <option value="<%= category.id %>"><%= category.name %></option>
+                            <option value="<%= category.id %>" <%= oldData && oldData.categoryId == category.id ? 'selected' : '' %>><%= category.name %></option>
                         <% }); %>
                     </select>
+                    <% if (errors && errors.categoryId) { %>
+                        <p class="error-text"><%= errors.categoryId.msg %></p>
+                    <% } %>
                 </div>
 
                 <div class="input-group">
