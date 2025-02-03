@@ -17,6 +17,8 @@ body {
     width: 100%;
     max-width: 1200px;
     flex: 1;
+    margin-top: 500px;
+    margin-bottom: 50px;
 }
 
 .create-product-container {

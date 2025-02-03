@@ -1,70 +1,44 @@
 const express = require("express");
 const router = express.Router();
-const isAdmin = require("../middlewares/adminMiddleware"); // ✅ Cambio de nombre
-
+const isAdmin = require("../middlewares/adminMiddleware");
 const productsController = require("../controllers/productsController");
-const upload = require("../middlewares/upload"); // ✅ Importamos multer
+const upload = require("../middlewares/upload");
 const usersRoutes = require("./usersRoutes");
 const authMiddleware = require("../middlewares/authMiddleware");
 
-// proteger la ruta de perfil
+// 📌 Protección de perfil (Solo usuarios logueados pueden acceder)
 router.get("/profile", authMiddleware, (req, res) => {
     res.render("users/profile", { user: req.session.user });
 });
 
-
 // 📌 Rutas de usuarios
 router.use("/", usersRoutes);
 
-// 🔹 Middleware para manejar sesiones
+// 📌 Middleware de sesión (Para que `user` esté disponible en todas las vistas)
 router.use((req, res, next) => {
     res.locals.user = req.session.user || null;
     next();
 });
 
-// 🏠 Página de inicio
-router.get("/", (req, res) => res.render("home", { title: "Inicio - ETECH" }));
+// 📌 Página de inicio
+router.get("/", productsController.home);
 
-// 🛒 Carrito de compras
-router.get("/cart", (req, res) => {
-    if (!req.session.user) {
-        return res.redirect("/login");
-    }
-    let cart = [
-        { id: 1, name: "Laptop Gamer", price: 1200, image: "laptop.jpg" },
-        { id: 2, name: "Teclado Mecánico", price: 150, image: "teclado.jpg" },
-        { id: 3, name: "Mouse Inalámbrico", price: 50, image: "mouse.jpg" }
-    ];
-    res.render("products/productCart", { title: "Carrito - ETECH", cart });
-});
-
-// 🛍 Listado de productos
+// 📌 Rutas de productos
 router.get("/products", productsController.list);
-
-// 🛠 CREAR PRODUCTO (Solo Admins)
 router.get("/products/create", isAdmin, productsController.createForm);
-router.post("/products/create", isAdmin, upload.single("image"), productsController.create); // ✅ Agregado `upload.single("image")`
-
-// ✏️ EDITAR PRODUCTO (Solo Admins)
+router.post("/products/create", isAdmin, upload.single("image"), productsController.create);
 router.get("/products/:id/edit", isAdmin, productsController.editForm);
-router.post("/products/:id/edit", isAdmin, upload.single("image"), productsController.update);
-
-// 🗑 Eliminar producto (Solo Admins)
+router.post("/products/update/:id", isAdmin, upload.single("image"), productsController.update);  // ✅ RUTA CORREGIDA
 router.post("/products/:id/delete", isAdmin, productsController.delete);
-
-// 🎨 Filtrar productos
-
 router.get("/products/filter", productsController.filter);
-
-
-// 🔍 Buscador de productos
 router.get("/products/search", productsController.search);
-
-// 🔎 Detalle de producto
 router.get("/products/:id", productsController.detail);
 
+// 📌 Rutas para destacar y aplicar descuentos a productos (solo Admins)
+router.post("/products/:id/toggle-featured", isAdmin, productsController.toggleFeatured);
+router.post("/products/:id/toggle-discount", isAdmin, productsController.toggleDiscount);
 
-// 🚪 Cerrar sesión
+// 📌 Cerrar sesión
 router.get("/logout", (req, res) => {
     req.session.destroy();
     res.redirect("/");

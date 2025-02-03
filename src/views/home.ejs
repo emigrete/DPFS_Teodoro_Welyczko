@@ -6,87 +6,56 @@
 </head>
 <body>
     <!-- HEADER -->
-
     <%- include('partials/header'); %>
 
     <!-- HERO IMAGE -->
-    <section class="hero text-center">
-        <img src="/images/imagenDefault.webp" class="hero-img" alt="Imagen Destacada">
+    <section class="hero">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="/videos/13057063_3840_2160_24fps.mp4" type="video/mp4">
+            Tu navegador no soporta videos en HTML5.
+        </video>
     </section>
 
-    <!-- PRODUCTOS DESTACADOS -->
-    <section class="featured-products">
-        <h2>Nuestros Productos Destacados</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="/images/imagenDefault.webp" alt="Producto 1">
-                <h3>Producto 1</h3>
-                <p>Descripción breve del producto.</p>
-                <a href="/products/1" class="btn">Más información</a>
+    <main class="products-container">
+        <!-- PRODUCTOS DESTACADOS -->
+        <% if (featuredProducts && featuredProducts.length > 0) { %>
+        <section class="featured-products">
+            <h2>Nuestros Productos Destacados</h2>
+            <div class="product-grid">
+                <% featuredProducts.forEach((product) => { %>
+                    <div class="product-card">
+                        <img src="/images/products/<%= product.image %>" alt="<%= product.name %>">
+                        <h3><%= product.name %></h3>
+                        <p class="price">$<%= product.price ? parseFloat(product.price).toFixed(2) : '0.00' %></p>
+                        <a href="/products/<%= product.id %>" class="btn btn-detail">Más información</a>
+                    </div>
+                <% }); %>
             </div>
-            <div class="product-card">
-                <img src="/images/imagenDefault.webp" alt="Producto 2">
-                <h3>Producto 2</h3>
-                <p>Descripción breve del producto.</p>
-                <a href="/products/2" class="btn">Más información</a>
-            </div>
-            <div class="product-card">
-                <img src="/images/imagenDefault.webp" alt="Producto 3">
-                <h3>Producto 3</h3>
-                <p>Descripción breve del producto.</p>
-                <a href="/products/3" class="btn">Más información</a>
-            </div>
-        </div>
-    </section>
+        </section>
+        <% } %>
 
-    <!-- PRODUCTOS CON DESCUENTO -->
-    <section class="discount-products">
-        <h2>Productos con Descuento</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="/images/imagenDefault.webp" alt="Producto 4">
-                <h3>Producto 4</h3>
-                <p>Descripción breve del producto.</p>
-                <a href="/products/1" class="btn">Más información</a>
+        <!-- PRODUCTOS CON DESCUENTO -->
+        <% if (discountedProducts && discountedProducts.length > 0) { %>
+        <section id= "discount" class="discount-products">
+            <h2>Productos con Descuento</h2>
+            <div class="product-grid">
+                <% discountedProducts.forEach((product) => { %>
+                    <div class="product-card">
+                        <img src="/images/products/<%= product.image %>" alt="<%= product.name %>">
+                        <h3><%= product.name %></h3>
+                        <p>
+                            <span class="old-price">$<%= product.originalPrice ? parseFloat(product.originalPrice).toFixed(2) : '0.00' %></span> 
+                            <span class="price">$<%= product.price ? parseFloat(product.price).toFixed(2) : '0.00' %></span>
+                        </p>
+                        <a href="/products/<%= product.id %>" class="btn btn-detail">Más información</a>
+                    </div>
+                <% }); %>
             </div>
-            <div class="product-card">
-                <img src="/images/imagenDefault.webp" alt="Producto 5">
-                <h3>Producto 5</h3>
-                <p>Descripción breve del producto.</p>
-                <a href="/products/1" class="btn">Más información</a>
-            </div>
-            <div class="product-card">
-                <img src="/images/imagenDefault.webp" alt="Producto 6">
-                <h3>Producto 6</h3>
-                <p>Descripción breve del producto.</p>
-                <a href="/products/1" class="btn">Más información</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN DE RESEÑAS -->
-    <section class="reviews">
-        <h2>Opiniones de Usuarios</h2>
-        <div class="review">
-            <h3>Usuario 1</h3>
-            <p>"Excelente servicio y calidad en los productos, muy recomendado."</p>
-        </div>
-        <div class="review">
-            <h3>Usuario 2</h3>
-            <p>"Gran experiencia de compra, envío rápido y atención al cliente excelente."</p>
-        </div>
-        <div class="review">
-            <h3>Usuario 3</h3>
-            <p>"Me encanta la variedad de productos y las ofertas disponibles, sin duda volveré a comprar."</p>
-        </div>
-    </section>
+        </section>
+        <% } %>
+    </main>
 
     <!-- FOOTER -->
-
     <%- include('partials/footer'); %>
-
-    <script src="../js/navbar.js"></script> 
-
 </body>
 </html>
-

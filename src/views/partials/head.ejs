@@ -1,6 +1,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title || "ETECH - Sitio Web" %></title> <!-- 📌 Evita error si title es undefined -->
+    <title><%= title || "ETECH - Sitio Web" %></title>
     <link rel="stylesheet" href="/css/global.css">
+    <!-- 🌟 Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <!-- 📌 Mostrar imagen de usuario en el header -->
+    <% if (typeof user !== 'undefined' && user && user.image) { %>
+        <link rel="icon" href="/images/users/<%= user.image && user.image !== 'default.jpg' ? user.image : 'default.jpg' %>?t=<%= Date.now() %>">
+    <% } else { %>
+        <link rel="icon" href="/images/users/default.jpg?t=<%= Date.now() %>">
+    <% } %>
 </head>

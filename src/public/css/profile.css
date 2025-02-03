@@ -1,3 +1,4 @@
+/* 📌 Estilos generales */
 .container {
     max-width: 600px;
     margin: 50px auto;
@@ -5,7 +6,15 @@
     font-family: Arial, sans-serif;
 }
 
-.container img {  /* Solo afecta imágenes dentro de .container */
+/* 📌 Ocultar formulario por defecto */
+.hidden {
+    display: none;
+}
+
+
+
+/* 🖼️ Imagen de perfil */
+.profile-image {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -13,12 +22,71 @@
     margin-top: 10px;
 }
 
-.container p {
-    font-size: 18px;
-    margin-top: 10px;
+
+/* 📑 Formulario de edición */
+.edit-profile-form {
+    margin-top: 20px;
+    padding: 15px;
+    background: #1F2937;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
-.container a.btn {
+
+/* 📌 Campos del formulario */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.input-group input {
+    padding: 8px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 🎨 Botón de actualizar */
+.btn-update {
+    padding: 10px 15px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-update:hover {
+    background: #0056b3;
+}
+
+/* 💾 Botón de guardar cambios */
+.btn-save {
+    background: #28A745;
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-save:hover {
+    background: #218838;
+}
+
+/* ❌ Botón de cerrar sesión */
+.btn-danger {
     display: inline-block;
     padding: 10px 15px;
     color: white;
@@ -29,6 +97,8 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-.container a.btn:hover {
+
+
+.btn-danger:hover {
     background-color: #c9302c;
 }

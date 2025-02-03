@@ -55,6 +55,11 @@ const mainRoutes = require("./routes/mainRoutes");
 // 📌 Usar las rutas
 app.use("/", mainRoutes);
 
+// 📌 Rutas de carrito 
+const cartRoutes = require("./routes/cartRoutes");
+app.use("/cart", cartRoutes);
+
+
 // 📌 Configurar el puerto y levantar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

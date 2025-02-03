@@ -1,30 +1,163 @@
-.btn-edit {
-    background-color: #ff9800;
-    color: white;
-    padding: 8px 12px;
+/* 🎯 Estilos globales */
+.products-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     text-align: center;
+}
+
+/* 🏷️ Título centrado */
+.products-container h1 {
+
+    font-size: 2.5rem;
+    margin: 20px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* 🎨 Estilos para el filtro */
+.filter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #1F2937;
+    border-radius: 8px;
+}
+
+.filter-form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.filter-form select {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 🛒 Grid de productos */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 📦 Tarjeta de producto */
+.product-card {
+    background: #1F2937;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 250px;
+}
+
+/* 📸 Imágenes con tamaño uniforme */
+.product-card img {
+    width: 100%;
+    height: 180px; /* 📌 Tamaño fijo sin deformación */
+    object-fit: contain; /* 🔥 Mantiene proporciones sin recortar */
+    border-radius: 10px;
+    background-color: #ffffff; /* 📌 Evita que imágenes transparentes se vean raras */
+    padding: 5px; /* 📌 Evita que imágenes pegadas a los bordes se vean mal */
+}
+
+/* 🎨 Texto del producto */
+.product-card h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #60A5FA;
+}
+
+/* 🔘 Botones */
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
     border-radius: 5px;
     text-decoration: none;
-    display: block;
-    margin-top: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
 }
+
+.btn-detail {
+    background: #007BFF;
+    color: white;
+}
+
+.btn-detail:hover {
+    background: #0056b3;
+}
+
+.btn-edit {
+    background: #FFA500;
+    color: white;
+}
+
 .btn-edit:hover {
-    background-color: #e68900;
+    background: #cc8400;
 }
 
 .btn-delete {
-    background-color: #d9534f;
+    background: #DC3545;
     color: white;
-    padding: 8px 12px;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 5px;
-    border: none;
-    cursor: pointer;
 }
 
 .btn-delete:hover {
-    background-color: #c9302c;
+    background: #C82333;
+}
+
+/* 🚫 Si no hay productos */
+.no-products {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.btn-featured {
+    background: #FFC107;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-featured:hover {
+    background: #E0A800;
+}
+
+.btn-discount {
+    background: #DC3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-discount:hover {
+    background: #C82333;
 }

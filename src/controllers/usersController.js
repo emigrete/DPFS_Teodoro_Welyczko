@@ -1,6 +1,8 @@
 const db = require("../database/models");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
+const fs = require("fs");
+const path = require("path");
 
 const usersController = {
     
@@ -13,17 +15,7 @@ const usersController = {
         });
     },
 
-    // 📌 Mostrar perfil del usuario logueado
-    profile: (req, res) => {
-        if (!req.session.user) return res.redirect("/login");
-
-        res.render("users/profile", {
-            title: "Mi Perfil - ETECH",
-            user: req.session.user
-        });
-    },
-
-    // 📌 Procesar el registro de usuario
+    // 📌 Procesar el registro de usuario y loguearlo automáticamente
     register: async (req, res) => {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -54,9 +46,83 @@ const usersController = {
             });
 
             console.log("✅ Usuario registrado correctamente:", newUser.email);
-            res.redirect("/");
+
+            // 📌 Iniciar sesión automáticamente después del registro
+            req.session.user = {
+                id: newUser.id,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                email: newUser.email,
+                role: newUser.role,
+                image: newUser.image
+            };
+
+            console.log("🔓 Usuario logueado automáticamente:", req.session.user.email);
+
+            // 📌 Redirigir al perfil del usuario
+            res.redirect("/profile");
+
         } catch (error) {
             console.error("❌ Error en registro:", error);
+            res.status(500).send("Error interno del servidor");
+        }
+    },
+
+    // 📌 Mostrar perfil del usuario logueado
+    profile: (req, res) => {
+        if (!req.session.user) return res.redirect("/login");
+
+        res.render("users/profile", {
+            title: "Mi Perfil - ETECH",
+            user: req.session.user
+        });
+    },
+
+    // 📌 Procesar actualización de perfil
+    updateProfile: async (req, res) => {
+        try {
+            const userId = req.session.user.id;
+            const user = await db.User.findByPk(userId);
+
+            if (!user) return res.redirect("/login");
+
+            let newImage = user.image; // 📌 Mantener la imagen anterior si no se sube una nueva
+
+            // 📌 Si hay una nueva imagen, reemplazarla
+            if (req.file) {
+                newImage = req.file.filename;
+
+                // 📌 Verificar si la imagen anterior existe antes de eliminarla
+                const oldImagePath = path.join(__dirname, "../public/images/users/", user.image);
+                if (user.image && user.image !== "default.jpg" && fs.existsSync(oldImagePath)) {
+                    fs.unlinkSync(oldImagePath);
+                }
+            }
+
+            // 📌 Actualizar los datos del usuario en la base de datos
+            await user.update({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                image: newImage || user.image
+            });
+
+            // 📌 ACTUALIZAR la sesión con los nuevos datos (Esperar a que se actualice)
+            req.session.user = {
+                ...req.session.user,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                image: newImage || "default.jpg" // 📌 Evitar que quede null
+            };
+
+            console.log("✅ Perfil actualizado correctamente:", req.session.user.image);
+
+            // 📌 Forzar la actualización de la sesión antes de redirigir
+            req.session.save(() => {
+                res.redirect("/profile?t=" + Date.now());
+            });
+
+        } catch (error) {
+            console.error("❌ Error al actualizar perfil:", error);
             res.status(500).send("Error interno del servidor");
         }
     },

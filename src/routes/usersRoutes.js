@@ -18,5 +18,9 @@ router.get("/profile", authMiddleware, usersController.profile);
 // 📌 Logout (cualquiera puede salir)
 router.get("/logout", usersController.logout);
 
+// 📌 Ruta protegida: Actualizar perfil (solo logueados)
+router.post("/profile/update", authMiddleware, upload.single("image"), usersController.updateProfile);
+
 module.exports = router;
+
 

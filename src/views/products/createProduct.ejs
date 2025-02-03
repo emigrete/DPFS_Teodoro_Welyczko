@@ -6,11 +6,12 @@
 </head>
 <body>
     <%- include('../partials/header'); %>
+
     <section class="main-container">
         <div class="create-product-container">
             <h2>Crear Producto</h2>
             <form action="/products/create" method="POST" enctype="multipart/form-data">
-                
+
                 <div class="input-group">
                     <label for="name">Nombre del Producto</label>
                     <input type="text" id="name" name="name" required>
@@ -22,8 +23,18 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="price">Precio</label>
-                    <input type="number" id="price" name="price" required>
+                    <label for="originalPrice">Precio sin Descuento</label>
+                    <input type="number" id="originalPrice" name="originalPrice" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="discountedPrice">Precio con Descuento</label>
+                    <input type="number" id="discountedPrice" name="discountedPrice" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="price">Precio Final</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
                 </div>
 
                 <div class="input-group">
@@ -59,6 +70,16 @@
                             <option value="<%= color.id %>"><%= color.name %></option>
                         <% }); %>
                     </select>
+                </div>
+
+                <div class="input-group checkbox-group">
+                    <label for="isDiscounted">¿Producto en Descuento?</label>
+                    <input type="checkbox" id="isDiscounted" name="isDiscounted">
+                </div>
+
+                <div class="input-group checkbox-group">
+                    <label for="isFeatured">¿Producto Destacado?</label>
+                    <input type="checkbox" id="isFeatured" name="isFeatured">
                 </div>
 
                 <button type="submit" class="btn">Crear Producto</button>

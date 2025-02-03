@@ -6,10 +6,11 @@
 </head>
 <body>
     <%- include('../partials/header'); %>
+
     <section class="main-container">
         <div class="create-product-container">
             <h2>Editar Producto</h2>
-            <form action="/products/<%= product.id %>/edit" method="POST" enctype="multipart/form-data">
+            <form action="/products/update/<%= product.id %>" method="POST" enctype="multipart/form-data">
 
                 <div class="input-group">
                     <label for="name">Nombre del Producto</label>
@@ -22,8 +23,18 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="price">Precio</label>
-                    <input type="number" id="price" name="price" value="<%= product.price %>" required>
+                    <label for="originalPrice">Precio sin Descuento</label>
+                    <input type="number" id="originalPrice" name="originalPrice" step="0.01" value="<%= product.originalPrice || product.price %>">
+                </div>
+
+                <div class="input-group">
+                    <label for="discountedPrice">Precio con Descuento</label>
+                    <input type="number" id="discountedPrice" name="discountedPrice" step="0.01" value="<%= product.discountedPrice || '' %>">
+                </div>
+
+                <div class="input-group">
+                    <label for="price">Precio Final</label>
+                    <input type="number" id="price" name="price" step="0.01" value="<%= product.price %>" required>
                 </div>
 
                 <div class="input-group">
@@ -60,11 +71,22 @@
                     </select>
                 </div>
 
+                <div class="input-group checkbox-group">
+                    <label for="isDiscounted">¿Producto en Descuento?</label>
+                    <input type="checkbox" id="isDiscounted" name="isDiscounted" <%= product.isDiscounted ? "checked" : "" %>>
+                </div>
+
+                <div class="input-group checkbox-group">
+                    <label for="isFeatured">¿Producto Destacado?</label>
+                    <input type="checkbox" id="isFeatured" name="isFeatured" <%= product.isFeatured ? "checked" : "" %>>
+                </div>
+
                 <button type="submit" class="btn">Guardar Cambios</button>
             </form>
             <a href="/" class="btn back-btn">Volver al Inicio</a>
         </div>
     </section>
+
     <%- include('../partials/footer'); %>
 </body>
 </html>

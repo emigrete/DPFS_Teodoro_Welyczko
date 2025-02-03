@@ -1,156 +1,215 @@
-
-
-.cart-login {
-    display: flex;
-    gap: 15px;
+/* 🔹 Mantener el fondo oscuro global */
+body {
+    background-color: #0A192F;  /* Asegurar el mismo fondo que en global.css */
+    color: #EAEAEA;  /* Texto claro */
 }
 
-.cart-login a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    background: #007BFF;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.cart-login a:hover {
-    background: #0056b3;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.cart-container {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding: 20px;
-}
-
-.cart-items {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    background: #1F2937;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-}
-
-.cart-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-    margin-right: 15px;
-}
-
-
-/* Product Detail */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 60px;
-    flex: 1;
-}
-
-.product-detail {
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.product-content {
+/* 🔹 Contenedor principal del detalle del producto */
+.product-detail-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    flex-wrap: wrap;
-    width: 100%;
+    align-items: center;
+    gap: 50px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 🖼️ Imagen del producto */
+.product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px; /* 🔹 Fijamos el ancho de la imagen */
+    height: 400px; /* 🔹 Fijamos la altura de la imagen */
 }
 
 .product-image img {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* 🔹 Ajuste sin deformar */
     border-radius: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.product-thumbnails {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+.product-image img:hover {
+    transform: scale(1.05);
 }
 
-.product-thumbnails img {
-    width: 60px;
-    height: 60px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/* 📄 Información del producto */
 .product-info {
-    max-width: 400px;
+    max-width: 500px;
+    padding: 20px;
+    background: #1F2937;  /* Color oscuro para seguir la estética global */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
     text-align: left;
 }
 
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0;
+/* 🏷️ Títulos y texto */
+.product-info h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #EAEAEA;
 }
 
-.btn {
-    padding: 10px 15px;
+.description {
+    font-size: 16px;
+    color: #B0BEC5;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Ajustar la descripción */
+.description {
+    font-size: 16px;
+    color: #B0BEC5;
+    margin-bottom: 15px;
+    max-height: 60px;  /* 📌 Limita la altura inicial */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* 📌 Cuando se expanda la descripción */
+.description.expanded {
+    max-height: none;
+    white-space: normal;
+}
+
+/* 🎨 Estilo del botón "Ver más" */
+.view-more-btn {
     background: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 10px 0;
+}
+
+.view-more-btn:hover {
+    background: #0056b3;
+}
+
+/* ℹ️ Información adicional */
+.product-info p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* 🏷️ Precio del producto */
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #60A5FA;
+    margin-bottom: 20px;
+}
+
+/* 🎨 Botón para agregar al carrito */
+.add-cart-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: #28A745;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-}
-
-.buy-btn {
-    background: #1E3A8A;
-}
-
-.buy-btn:hover {
-    background: #15326B;
-}
-
-.add-cart-btn {
-    background: #60A5FA;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 20px;
 }
 
 .add-cart-btn:hover {
-    background: #3B82F6;
+    background: #218838;
+    transform: scale(1.05);
 }
 
-.product-description {
-    margin-top: 40px;
+/* 🔢 Controles de cantidad */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    background: #1F2937;
+    padding: 8px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+/* 🔘 Botones de incremento y decremento */
+.btn-quantity {
+    background: #007BFF;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-quantity:hover {
+    background: #0056b3;
+}
+
+.btn-quantity:active {
+    transform: scale(0.95);
+}
+
+/* 🔢 Campo de entrada de cantidad */
+.quantity-controls input {
+    width: 50px;
     text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background: white;
+    color: black;
 }
 
-.description-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+/* 🛒 Botón de agregar al carrito */
+.add-cart-btn {
     width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: #28A745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.add-cart-btn:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+
+/* 📌 Diseño responsive */
+@media screen and (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-info {
+        max-width: 100%;
+    }
+
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
 }

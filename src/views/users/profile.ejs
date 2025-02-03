@@ -1,31 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <% if (typeof title === 'undefined') { %>
-        <% title = "Mi Perfil - ETECH"; %> <!-- ✅ Asegurar que title tenga un valor -->
+        <% title = "Mi Perfil - ETECH"; %>
     <% } %>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/css/profile.css">
+    <script defer src="/js/profile.js"></script> <!-- 📌 Script para manejar la visibilidad del formulario -->
 </head>
-
 <body>
     <%- include('../partials/header'); %>
 
     <main class="container">
-        <h1><strong>Bienvenido, <%= user.firstName %> <%= user.lastName %>!</strong></h1>
+        <h1><strong>Bienvenido/a, <%= user.firstName %> <%= user.lastName %>!</strong></h1>
 
-        <img src="/images/users/<%= user.image ? user.image : 'default.jpg' %>" alt="Foto de perfil"
-        style="width: 150px; border-radius: 50%; border: 2px solid #000;">
-    
+        <!-- 📌 Mostrar imagen de perfil con ruta correcta -->
+        <img src="/images/users/<%= user.image && user.image !== 'default.jpg' ? user.image : 'default.jpg' %>?t=<%= Date.now() %>" 
+        alt="Foto de perfil" class="profile-image">
+   
+   
+   
+   
 
         <p>Email: <%= user.email %></p>
-        <p>Rol: <%= user.role %></p>
+
+        <!-- 📌 Botón para mostrar/ocultar el formulario -->
+        <button id="edit-profile-btn" class="btn btn-update">Editar Perfil</button>
+
+        <!-- 📌 Formulario oculto inicialmente -->
+        <form action="/profile/update" method="POST" enctype="multipart/form-data" class="edit-profile-form hidden">
+            <div class="input-group">
+                <label for="image">Cambiar foto de perfil:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+
+            <div class="input-group">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" required>
+            </div>
+
+            <div class="input-group">
+                <label for="lastName">Apellido:</label>
+                <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>" required>
+            </div>
+
+            <button type="submit" class="btn btn-save">Guardar Cambios</button>
+        </form>
 
         <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
     </main>
 
     <%- include('../partials/footer'); %>
-</body>
 
+    
+</body>
 </html>

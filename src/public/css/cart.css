@@ -1,30 +1,11 @@
-
-
-.cart-login {
-    display: flex;
-    gap: 15px;
-}
-
-.cart-login a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    background: #007BFF;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.cart-login a:hover {
-    background: #0056b3;
-}
-
+/* 🔹 Estilos generales */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* 🔹 Estilos del contenedor del carrito */
 .cart-container {
     width: 80%;
     margin: auto;
@@ -32,40 +13,60 @@
     padding: 20px;
 }
 
+/* 🛒 Lista de productos en el carrito */
 .cart-items {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+/* 🏷️ Estilos de cada producto en el carrito */
 .cart-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: #1F2937;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
 }
 
-.cart-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
+/* 🖼️ Imagen del producto */
+.cart-product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Evita deformaciones */
+    border-radius: 8px;
     margin-right: 15px;
+    transition: transform 0.2s;
 }
 
+.cart-product-image:hover {
+    transform: scale(1.05);
+}
 
-
+/* 📄 Detalles del producto */
 .item-details {
     flex-grow: 1;
+    text-align: left;
 }
 
+/* 📌 Estilos de precio y cantidad */
+.price, .quantity {
+    font-size: 16px;
+    font-weight: bold;
+    color: #60A5FA;
+}
+
+/* 🔄 Controles de cantidad (+ y -) */
 .quantity-controls {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* 🎨 Botones generales */
 .btn {
     padding: 10px 15px;
     background: #007BFF;
@@ -81,19 +82,82 @@
     transform: scale(1.05);
 }
 
-.checkout-btn {
+/* ➕➖ Botones de cantidad */
+.btn-quantity {
+    background: #FFC107;
+    padding: 8px 12px;
+    font-size: 18px;
+}
+
+.btn-quantity:hover {
+    background: #E0A800;
+}
+
+/* ❌ Botón de eliminar producto */
+.btn-delete {
+    background: #DC3545;
+}
+
+.btn-delete:hover {
+    background: #C82333;
+}
+
+/* 📌 Contenedor de total y botones alineados */
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     margin-top: 20px;
-    padding: 10px 20px;
+}
+
+/* 🎨 Total con estilo azul */
+.cart-total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #60A5FA;
+}
+
+/* 🛍 Botones alineados */
+.cart-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* 🟢 Botón de seguir comprando */
+.continue-shopping {
+    background: #28A745;
+}
+
+.continue-shopping:hover {
+    background: #218838;
+}
+
+/* 🔵 Botón de finalizar compra */
+.checkout-btn {
     background: #60A5FA;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
 }
 
 .checkout-btn:hover {
     background: #3B82F6;
 }
 
+/* 📌 Diseño responsive */
+@media screen and (max-width: 768px) {
+    .cart-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
+    .cart-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cart-total {
+        margin-bottom: 10px;
+    }
+}

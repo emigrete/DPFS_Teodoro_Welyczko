@@ -12,8 +12,12 @@ const getUploadPath = (folder) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        let folder = "products"; // Por defecto, guarda en productos
-        if (req.originalUrl.includes("register")) folder = "users";
+        let folder = "products"; // 📌 Por defecto, guarda en productos
+
+        if (req.originalUrl.includes("register") || req.originalUrl.includes("profile/update")) {
+            folder = "users"; // 📌 Guarda imágenes de usuarios en `/public/images/users/`
+        }
+
         cb(null, getUploadPath(folder));
     },
     filename: (req, file, cb) => {
@@ -24,3 +28,4 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 module.exports = upload;
+

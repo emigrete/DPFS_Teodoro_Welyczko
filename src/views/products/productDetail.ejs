@@ -3,39 +3,41 @@
 <head>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/css/productDetail.css">
+    <script defer src="/js/productDetail.js"></script> <!-- 📌 Script para expandir descripción -->
 </head>
 <body>
-
     <%- include('../partials/header'); %>
 
-    <section class="product-detail">
-        <div class="container">
-            <div class="product-content">
-                <div class="product-image">
-                    <img src="/images/products/<%= product.image %>" alt="<%= product.name %>">
-                    <div class="product-thumbnails">
-                        <img src="/uploads/<%= product.image %>" alt="Miniatura 1">
-                        <img src="/uploads/<%= product.image %>" alt="Miniatura 2">
-                        <img src="/uploads/<%= product.image %>" alt="Miniatura 3">
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h1><%= product.name %></h1>
-                    <h2>Precio: $<%= product.price %></h2>
-                    <p><%= product.description %></p>
+    <section class="product-detail-container">
+        <div class="product-image">
+            <img src="/images/products/<%= product.image %>" alt="<%= product.name %>">
+        </div>
+        <div class="product-info">
+            <h2><%= product.name %></h2>
+            <p class="description short-description"><%= product.description %></p>
+            <button class="btn view-more-btn">Ver más</button> <!-- Botón para expandir descripción -->
+
+            <p class="price">$<%= product.price %></p>
+            <p><strong>Categoría:</strong> <%= product.category ? product.category.name : 'No especificado' %></p>
+            <p><strong>Marca:</strong> <%= product.brand ? product.brand.name : 'No especificado' %></p>
+            <p><strong>Color:</strong> <%= product.color ? product.color.name : 'No especificado' %></p>
+
+            <div class="cart-section">
+                <form action="/cart/add" method="POST">
+                    <input type="hidden" name="productId" value="<%= product.id %>">
+                    
                     <div class="quantity-controls">
-                        <button class="btn">-</button>
-                        <span>1</span>
-                        <button class="btn">+</button>
+                        <button type="button" class="btn-quantity decrease">-</button>
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="button" class="btn-quantity increase">+</button>
                     </div>
-                    <button class="btn buy-btn">Comprar</button>
-                    <button class="btn add-cart-btn">Agregar al Carrito</button>
-                </div>
+            
+                    <button type="submit" class="btn add-cart-btn">🛒 Agregar al Carrito</button>
+                </form>
             </div>
         </div>
     </section>
 
     <%- include('../partials/footer'); %>
-
 </body>
 </html>
