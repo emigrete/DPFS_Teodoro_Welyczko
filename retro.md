@@ -206,3 +206,45 @@ Este Sprint estuvo enfocado en implementar validaciones tanto en el backend como
 
 💡 Conclusión:
 Este Sprint fue clave para mejorar la seguridad y la experiencia del usuario dentro del sistema. Las validaciones ahora garantizan que solo datos correctos lleguen a la base de datos, lo que previene errores y mantiene la aplicación estable. El sistema ahora es mucho más robusto y confiable.
+---
+📌 Retrospectiva del Sprint 8
+
+Este Sprint estuvo enfocado en la creación de una API RESTful para la gestión de usuarios y productos, así como en el desarrollo de un dashboard en React que permitiera visualizar las principales métricas del sistema. Además, se realizaron mejoras en la arquitectura del proyecto para optimizar el consumo de datos y la experiencia del usuario.
+
+⭐ Lo que salió bien
+
+✅ Creación e implementación de una API RESTful para gestionar usuarios y productos.
+✅ Endpoints de listado y detalle de usuarios (/api/users/, /api/users/:id) funcionando correctamente.
+✅ Endpoints de listado y detalle de productos (/api/products/, /api/products/:id) estructurados de manera eficiente.
+✅ Integración del dashboard en React consumiendo la API correctamente.
+✅ Implementación de tarjetas de estadísticas para mostrar el total de usuarios y productos.
+✅ Visualización del último producto creado, incluyendo su imagen y descripción.
+✅ Creación de una tabla de usuarios y productos para mejorar la visualización de datos.
+✅ Mejora de la experiencia del usuario con un diseño más limpio y responsivo.
+✅ Correcciones en los estilos (styles.css), asegurando que los elementos se alinearan correctamente.
+✅ Implementación de useEffect en React para optimizar las peticiones a la API.
+✅ Corrección de errores en la API para evitar undefined en algunos campos.
+✅ Optimización de productsController.js y usersController.js para mejorar el rendimiento de las consultas.
+
+⚠️ Lo que puedo mejorar
+
+🔹 Mejorar la carga de imágenes en la API para asegurar que se muestren correctamente en el frontend.
+🔹 Agregar paginado en los endpoints de usuarios y productos para evitar respuestas demasiado largas.
+🔹 Implementar un manejador global de errores en la API para mejorar el debugging.
+🔹 Refinar la validación de datos en la API para asegurar respuestas consistentes.
+🔹 Optimizar el dashboard agregando gráficos y filtros para visualizar tendencias.
+🔹 Permitir la edición y eliminación de productos desde el dashboard.
+
+🎯 Plan de mejora para futuras versiones
+
+🔹 Implementar paginación en la API para mejorar la escalabilidad.
+🔹 Agregar filtros dinámicos en el dashboard para una mejor navegación.
+🔹 Optimizar las peticiones a la API reduciendo el número de llamadas innecesarias.
+🔹 Desplegar la API y el dashboard en plataformas cloud para pruebas en producción.
+🔹 Integrar autenticación y roles en el dashboard para administradores.
+
+💡 Conclusión:
+Este Sprint permitió una evolución significativa del proyecto, integrando una API funcional y un dashboard en React que facilita la gestión de datos. Se logró una arquitectura más robusta y escalable, con mejoras visuales y técnicas que optimizan la experiencia del usuario.
+
+💪 El proyecto está listo para su siguiente fase de optimización y despliegue.
+
