@@ -170,3 +170,39 @@ Este Sprint estuvo enfocado en migrar el proyecto de archivos JSON a una base de
 🔹 Integrar un sistema de roles para diferenciar entre administradores y usuarios normales.
 
 💡 Conclusión: Este Sprint fue un gran avance en la estructuración del proyecto, pasando de archivos JSON a una base de datos completamente funcional con Sequelize. Aprendí mucho sobre migraciones, seeders y relaciones en SQL, aunque aún hay margen de mejora en el manejo de errores y validaciones. 
+
+--- 
+
+# 📌 Retrospectiva del Sprint 7
+Este Sprint estuvo enfocado en implementar validaciones tanto en el backend como en el frontend para asegurar que los datos ingresados por los usuarios sean correctos y mejorar la seguridad del sistema. También se optimizó la experiencia del usuario al mostrar mensajes de error de manera clara y consistente en todas las vistas.
+
+## ⭐ Lo que salió bien
+✅ Implementación completa de validaciones en el backend usando Express Validator.
+✅ Validaciones en el registro de usuarios: nombres, email, contraseña, confirmación de contraseña e imagen.
+✅ Validaciones en el login de usuarios con errores específicos en el email y contraseña.
+✅ Validaciones en la creación y edición de productos asegurando datos correctos en nombre, descripción, precios, categorías, marcas, colores e imágenes.
+✅ Implementación de validaciones en el frontend con JavaScript para mejorar la experiencia del usuario.
+✅ Mensajes de error mostrados debajo de cada campo en los formularios de login, registro y productos.
+✅ Corrección de errores en el backend, asegurando que validationResult(req) se maneje correctamente en los controladores.
+✅ Unificación del diseño de errores en todas las vistas (register.ejs, login.ejs, createProduct.ejs, editProduct.ejs).
+✅ Mejor manejo de datos en los formularios, evitando que los campos se borren tras un error (oldData).
+✅ Correcciones en productsController.js y usersController.js para evitar crashes y mejorar el flujo de validaciones.
+✅ Optimización del código en las rutas (mainRoutes.js y usersRoutes.js) asegurando que los middlewares de validación se ejecuten correctamente.
+
+
+## ⚠️ Lo que puedo mejorar
+🔹 Optimizar la validación de imágenes para evitar cargas innecesarias en el servidor.
+🔹 Refactorizar la lógica de validación para reducir la repetición de código en validateRegister.js y validateProduct.js.
+🔹 Mejorar la validación en tiempo real en el frontend para evitar envíos innecesarios al servidor.
+🔹 Manejar mejor los errores en Sequelize cuando hay problemas con duplicidad de emails o validaciones en la base de datos.
+🔹 Agregar mensajes de error más específicos en los formularios de productos para que los usuarios entiendan mejor qué deben corregir.
+
+## 🎯 Plan de mejora para Sprint 8
+🔹 Implementar mensajes de validación más dinámicos en el frontend con eventos en los inputs.
+🔹 Agregar una validación adicional en el backend para evitar que productos con nombres repetidos sean creados.
+🔹 Optimizar la carga de imágenes asegurando que solo archivos correctos lleguen al servidor.
+🔹 Integrar un sistema de permisos y roles para diferenciar accesos entre usuarios y administradores.
+🔹 Mejorar la documentación del código para facilitar futuras modificaciones.
+
+💡 Conclusión:
+Este Sprint fue clave para mejorar la seguridad y la experiencia del usuario dentro del sistema. Las validaciones ahora garantizan que solo datos correctos lleguen a la base de datos, lo que previene errores y mantiene la aplicación estable. El sistema ahora es mucho más robusto y confiable.

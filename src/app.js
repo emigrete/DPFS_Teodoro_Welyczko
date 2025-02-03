@@ -4,8 +4,14 @@ const session = require("express-session");
 const multer = require("multer");
 const cookieParser = require("cookie-parser");
 const rememberMiddleware = require("./middlewares/rememberMiddleware");
+const apiRoutes = require("./routes/apiRoutes");
+const cors = require("cors");
+
 
 const app = express();
+
+app.use(cors()); // ✅ Habilita las solicitudes desde el frontend
+
 
 // 📌 Middleware de cookies y sesiones
 app.use(cookieParser());
@@ -58,6 +64,9 @@ app.use("/", mainRoutes);
 // 📌 Rutas de carrito 
 const cartRoutes = require("./routes/cartRoutes");
 app.use("/cart", cartRoutes);
+
+// 📌 Rutas de api's
+app.use("/api", apiRoutes);
 
 
 // 📌 Configurar el puerto y levantar el servidor
