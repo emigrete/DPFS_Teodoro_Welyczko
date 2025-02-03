@@ -21,3 +21,7 @@
 ##📌Link Trello
 
 -[Trello](https://trello.com/invite/b/679bf0fa6dd9d5906a595a33/ATTI068484e912baf53fbadc14b387e7ba492E88CFC0/portfolio-step-by-step-guide)
+
+## VIDEO DE COMO PENSE LA PAGINA 
+
+-[Video](https://youtu.be/tlhKgujSQyw) 
