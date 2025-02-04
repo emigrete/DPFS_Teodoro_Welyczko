@@ -76,20 +76,20 @@ Reflexioné sobre lo que hice bien y lo que puedo mejorar en los siguientes spri
 
 ---
 
-💡 Conclusión: Este sprint nos permitió estructurar mejor las vistas y la navegación del sitio. Para el próximo sprint, el objetivo es darle funcionalidad real al sitio mediante la carga dinámica de productos y usuarios.
+💡 Conclusión: Este sprint me permitió estructurar mejor las vistas y la navegación del sitio. Para el próximo sprint, el objetivo es darle funcionalidad real al sitio mediante la carga dinámica de productos y usuarios.
 
 # 📌 Retrospectiva del Sprint 4
-El Sprint 4 fue clave en la implementación del CRUD de productos con JSON, lo que nos permitió mejorar la gestión de datos y la experiencia de usuario. 
+El Sprint 4 fue clave en la implementación del CRUD de productos con JSON, lo que me permitió mejorar la gestión de datos y la experiencia de usuario. 
 
 ## ⭐ Lo que salió bien
 
-✅Estructuramos el servidor con Express, permitiendo modularizar mejor el código.
+✅Estructure el servidor con Express, permitiendo modularizar mejor el código.
 ✅Implementamos un CRUD completo para la gestión de productos.
-✅ Desarrollamos vistas dinámicas con EJS, optimizando la reusabilidad de componentes.
-✅ Agregamos Multer para la subida de imágenes, mejorando la presentación visual.
-✅Implementamos autenticación y roles para diferenciar funciones de admin y usuario.
+✅ Desarrollé vistas dinámicas con EJS, optimizando la reusabilidad de componentes.
+✅ Agregue Multer para la subida de imágenes, mejorando la presentación visual.
+✅Implemente autenticación y roles para diferenciar funciones de admin y usuario.
 ✅ Creación de buscador y filtros para mejorar la usabilidad y navegación.
-✅Mejoramos la navegación agregando botones de edición y eliminación visibles solo para admins.
+✅Mejore la navegación agregando botones de edición y eliminación visibles solo para admins.
 
 ## ⚠️ Lo que puedo mejorar
 
@@ -141,7 +141,7 @@ Este Sprint se enfocó en la implementación del sistema de usuarios, incluyendo
 ---
 
 # 📌 Retrospectiva del Sprint 6
-Este Sprint estuvo enfocado en migrar el proyecto de archivos JSON a una base de datos con Sequelize, asegurando que la estructura sea sólida y compatible con el CRUD de productos y usuarios. También mejoramos la autenticación, el carrito y la búsqueda dinámica de productos.
+Este Sprint estuvo enfocado en migrar el proyecto de archivos JSON a una base de datos con Sequelize, asegurando que la estructura sea sólida y compatible con el CRUD de productos y usuarios. También mejore la autenticación, el carrito y la búsqueda dinámica de productos.
 
 ## ⭐ Lo que salió bien
 ✅ Migración completa de los datos de JSON a MySQL con Sequelize.
@@ -218,7 +218,7 @@ Este Sprint estuvo enfocado en la creación de una API RESTful para la gestión 
 ✅ Endpoints de listado y detalle de productos (/api/products/, /api/products/:id) estructurados de manera eficiente.
 ✅ Integración del dashboard en React consumiendo la API correctamente.
 ✅ Implementación de tarjetas de estadísticas para mostrar el total de usuarios y productos.
-✅ Visualización del último producto creado, incluyendo su imagen y descripción.
+✅ Visualización del último producto creado, incluyendo su descripción.
 ✅ Creación de una tabla de usuarios y productos para mejorar la visualización de datos.
 ✅ Mejora de la experiencia del usuario con un diseño más limpio y responsivo.
 ✅ Correcciones en los estilos (styles.css), asegurando que los elementos se alinearan correctamente.
