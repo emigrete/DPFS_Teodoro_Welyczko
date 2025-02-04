@@ -246,5 +246,4 @@ Este Sprint estuvo enfocado en la creación de una API RESTful para la gestión 
 💡 Conclusión:
 Este Sprint permitió una evolución significativa del proyecto, integrando una API funcional y un dashboard en React que facilita la gestión de datos. Se logró una arquitectura más robusta y escalable, con mejoras visuales y técnicas que optimizan la experiencia del usuario.
 
-💪 El proyecto está listo para su siguiente fase de optimización y despliegue.
 
